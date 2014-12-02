@@ -1,0 +1,170 @@
+html, body, ul, ol {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333; }
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  line-style: none; }
+nav li {
+  display: inline-block; }
+nav a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none; }
+
+.box {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px; }
+
+.message, .success, .error, .seriousError, .warning {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333; }
+
+.success {
+  border-color: green; }
+
+.error, .seriousError {
+  border-color: red; }
+
+.warning {
+  border-color: yellow; }
+
+.container {
+  width: 100%; }
+
+article[role="main"] {
+  float: left;
+  width: 62.5%; }
+
+aside[role="complimentary"] {
+  float: right;
+  width: 31.25%; }
+
+body.firefox .header:before {
+  content: "Hi, Firefox users!"; }
+
+p {
+  font-size: 0.4em; }
+
+p {
+  color: rgba(255, 0, 0, 0.8);
+  background-color: rgba(255, 0, 0, 0.25); }
+
+p {
+  cursor: e-resize; }
+
+p.foo {
+  border-color: blue; }
+
+div:hover {
+  color: red; }
+
+div > a:hover {
+  color: red; }
+
+.sidebar {
+  width: 300px; }
+  @media screen and (orientation: landscape) {
+    .sidebar {
+      width: 500px; } }
+
+.error, .seriousError {
+  border: 1px #f00;
+  background-color: #fdd; }
+
+.attention, .seriousError {
+  font-size: 3em;
+  background-color: #ff0; }
+
+.seriousError {
+  border-width: 3px; }
+
+#context a.notice {
+  color: blue;
+  font-weight: bold;
+  font-size: 2em; }
+
+.parent {
+  margin: 0; }
+  .child1 {
+    margin: 0; }
+
+  .child2 {
+    margin: 0; }
+  .parent .step-child {
+    margin: 0; }
+
+p {
+  border: 1px solid; }
+
+p {
+  color: green; }
+
+.item-1 {
+  width: 2em; }
+
+.item-2 {
+  width: 4em; }
+
+.item-3 {
+  width: 6em; }
+
+.puma-icon {
+  background-image: url("/images/puma.png"); }
+
+.sea-slug-icon {
+  background-image: url("/images/sea-slug.png"); }
+
+.egret-icon {
+  background-image: url("/images/egret.png"); }
+
+.salamander-icon {
+  background-image: url("/images/salamander.png"); }
+
+.puma-icon {
+  background-image: url("/images/puma.png");
+  border: 2px solid black;
+  cursor: default; }
+
+.sea-slug-icon {
+  background-image: url("/images/sea-slug.png");
+  border: 2px solid blue;
+  cursor: pointer; }
+
+.egret-icon {
+  background-image: url("/images/egret.png");
+  border: 2px solid white;
+  cursor: move; }
+
+.item-6 {
+  width: 12em; }
+
+.item-4 {
+  width: 8em; }
+
+.item-2 {
+  width: 4em; }
+
+* {
+  display: inline-block; }
+  *:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+  * html * {
+    height: 1px; }
+
+#sidebar {
+  width: 240px; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Namespace: array</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Namespace: array</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="vinyl.html">vinyl</a>.</span>
+        
+        array
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">배열관련 유틸함수</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2279">line 2279</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="any"><span class="type-signature">(static) </span>any<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        반복자함수의 반환값이 true일 때까지 반복
+    </div>
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2340">line 2340</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="every"><span class="type-signature">(static) </span>every<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        반복자함수의 반환값이 true가 아닐 때까지 반복
+    </div>
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2323">line 2323</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="map"><span class="type-signature">(static) </span>map<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        콜백함수로 하여금 요소를 가공하는 함수
+    </div>
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2298">line 2298</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.array.map([1, 2, 3], function(item, index) {		return item * 10;});=> [10, 20, 30]</code></pre>
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    
+        <h4 class="name" id="append"><span class="type-signature">(static) </span>append<span class="signature">(arr)</span><span class="type-signature"> &rarr; {*}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        배열 병합
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>arr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>...</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2293">line 2293</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="filter"><span class="type-signature">(static) </span>filter<span class="signature">(obj, cb, (optional))</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        콜백함수로 하여금 요소를 걸려내는 함수
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">배열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">콜백함수</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>(optional)</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">컨텍스트</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2375">line 2375</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.array.filter([1, '일', 2, '이', 3, '삼'], function(item, index) {		return typeof item === 'string';});=> ['일','이','삼']</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="include"><span class="type-signature">(static) </span>include<span class="signature">(obj, cb)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        주어진 배열에 지정된 값이 존재하는지 체크
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">배열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">콜백함수</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2409">line 2409</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.array.include([1, '일', 2, '이', 3, '삼'], '삼');  => true</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="indexOf"><span class="type-signature">(static) </span>indexOf<span class="signature">(obj, cb)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        주어진 인덱스의 요소를 반환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">배열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">콜백함수</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2422">line 2422</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.array.indexOf([1, '일', 2, '이', 3, '삼'], '일');  => 1</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="max"><span class="type-signature">(static) </span>max<span class="signature">(array)</span><span class="type-signature"> &rarr; {Mix}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        주어진 배열에서 가장 큰 요소를 반환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>array</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">배열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2484">line 2484</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Mix</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="min"><span class="type-signature">(static) </span>min<span class="signature">(array)</span><span class="type-signature"> &rarr; {Mix}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        주어진 배열에서 가장 작은 요소를 반환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>array</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">배열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2494">line 2494</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Mix</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="remove"><span class="type-signature">(static) </span>remove<span class="signature">(value, item)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        주어진 배열에서 해당하는 요소를 삭제
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">배열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>item</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Mixed</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">요소</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2462">line 2462</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    지정한 요소가 삭제된 배열
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="removeAt"><span class="type-signature">(static) </span>removeAt<span class="signature">(value, index)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        주어진 배열에서 index에 해당하는 요소를 삭제
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">배열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>index</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">삭제할 인덱스 or 요소</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2447">line 2447</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    지정한 요소가 삭제된 배열
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="shuffle"><span class="type-signature">(static) </span>shuffle<span class="signature">(obj)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        배열 요소의 순서를 섞어주는 함수
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">배열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2362">line 2362</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    순서가 섞인 새로운 배열
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="$.html">$</a></li><li><a href="vinyl.Listener.html">Listener</a></li><li><a href="vinyl.ui.View.html">View</a></li></ul><h3>Namespaces</h3><ul><li><a href="vinyl.html">vinyl</a></li><li><a href="vinyl.array.html">array</a></li><li><a href="vinyl.Base.html">Base</a></li><li><a href="vinyl.css3.html">css3</a></li><li><a href="vinyl.date.html">date</a></li><li><a href="vinyl.number.html">number</a></li><li><a href="vinyl.object.html">object</a></li><li><a href="vinyl.PubSub.html">PubSub</a></li><li><a href="vinyl.string.html">string</a></li><li><a href="vinyl.uri.html">uri</a></li><li><a href="vinyl.util.html">util</a></li><li><a href="vinyl.valid.html">valid</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addToArray">addToArray</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#hasOwn">hasOwn</a></li><li><a href="global.html#is">is</a></li><li><a href="global.html#isEmpty">isEmpty</a></li><li><a href="global.html#loadScript">loadScript</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removeToArray">removeToArray</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html#scroll%2520top%2520animate">scroll top animate</a></li><li><a href="global.html#set">set</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Tue Dec 02 2014 17:13:02 GMT+0900 (KST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

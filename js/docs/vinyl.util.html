@@ -1,0 +1,1937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Namespace: util</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Namespace: util</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="vinyl.html">vinyl</a>.</span>
+        
+        util
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2647">line 2647</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    
+        <h4 class="name" id="centeringImage"><span class="type-signature">(static) </span>centeringImage<span class="signature">($imgs, wrapWidth, wrapHeight, onError<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        data-src에 있는 이미지주소를 실제로 불러들인 다음, 주어진 사이즈내에서 가운데에 배치시켜주는 함수
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>$imgs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>wrapWidth</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">최대 너비 값</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>wrapHeight</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">최대 높이 값</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>onError</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">(optional) 이미지를 불어오지 못했을 경우 실행할 콜백함수</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2799">line 2799</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    true 불러들인 이미지가 있었는지 여부
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="getDimensions"><span class="type-signature">(static) </span>getDimensions<span class="signature">(elem)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        주어진 요소의 사이즈 & 위치를 반환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line3022">line 3022</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    {width: 너비, height: 높이, offset: { top: 탑위치, left: 레프트위치}}
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="getDocHeight"><span class="type-signature">(static) </span>getDocHeight<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        도큐먼트의 높이를 반환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2923">line 2923</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="getDocWidth"><span class="type-signature">(static) </span>getDocWidth<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        도큐먼트의 너비를 반환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2939">line 2939</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="getWinHeight"><span class="type-signature">(static) </span>getWinHeight<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        창의 높이를 반환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2970">line 2970</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="getWinWidth"><span class="type-signature">(static) </span>getWinWidth<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        창의 너비를 반환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2954">line 2954</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="lazyImages"><span class="type-signature">(static) </span>lazyImages<span class="signature">(target, loadingClip)</span><span class="type-signature"> &rarr; {jquery}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        data-src속성에 있는 이미지url를 src에 설정하여 로드시키는 함수
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>target</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">jquery/string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">이미지 요소</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>loadingClip</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">jquery/string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2834">line 2834</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    deferred
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">jquery</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="openPopup"><span class="type-signature">(static) </span>openPopup<span class="signature">(url, width<span class="signature-attributes">opt</span>, height<span class="signature-attributes">opt</span>, 팝업<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        팝업을 띄우는 함수. (vinyl.openPopup으로도 사용가능)
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>url</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">주소</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>width</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">너비.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>height</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">높이.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>팝업</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">opts</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">창 모양 제어 옵션.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2737">line 2737</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="openPopup2"><span class="type-signature">(static) </span>openPopup2<span class="signature">()</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        팝업 뛰우기
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line3104">line 3104</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="png24"><span class="type-signature">(static) </span>png24<span class="signature">()</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        ie하위버전에서 주어진 셀렉터에 해당하는 png 이미지가 정상적으로 출력되도록 AlphaImageLoader필터를 적용시켜 주는 함수png
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2660">line 2660</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="pngFix"><span class="type-signature">(static) </span>pngFix<span class="signature">()</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        ie하위버전에서 페이지에 존재하는 모든 png 이미지가 정상적으로 출력되도록 AlphaImageLoader필터를 적용시켜 주는 함수png Fix
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2680">line 2680</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="popupCoords"><span class="type-signature">(static) </span>popupCoords<span class="signature">(w, h)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        팝업의 사이즈에 따른 화면상의 중앙 위치좌표를 반환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>w</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">너비.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>h</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">높이.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2779">line 2779</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    {left: 값, top: 값}
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="resizePopup"><span class="type-signature">(static) </span>resizePopup<span class="signature">()</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        팝업의 사이즈를 $el 사이즈에 맞게 조절
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2768">line 2768</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="wmode"><span class="type-signature">(static) </span>wmode<span class="signature">()</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        페이지에 존재하는 플래쉬의 wmode모드를 opaque로 변경
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2701">line 2701</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="$.html">$</a></li><li><a href="vinyl.Listener.html">Listener</a></li><li><a href="vinyl.ui.View.html">View</a></li></ul><h3>Namespaces</h3><ul><li><a href="vinyl.html">vinyl</a></li><li><a href="vinyl.array.html">array</a></li><li><a href="vinyl.Base.html">Base</a></li><li><a href="vinyl.css3.html">css3</a></li><li><a href="vinyl.date.html">date</a></li><li><a href="vinyl.number.html">number</a></li><li><a href="vinyl.object.html">object</a></li><li><a href="vinyl.PubSub.html">PubSub</a></li><li><a href="vinyl.string.html">string</a></li><li><a href="vinyl.uri.html">uri</a></li><li><a href="vinyl.util.html">util</a></li><li><a href="vinyl.valid.html">valid</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addToArray">addToArray</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#hasOwn">hasOwn</a></li><li><a href="global.html#is">is</a></li><li><a href="global.html#isEmpty">isEmpty</a></li><li><a href="global.html#loadScript">loadScript</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removeToArray">removeToArray</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html#scroll%2520top%2520animate">scroll top animate</a></li><li><a href="global.html#set">set</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Tue Dec 02 2014 17:13:03 GMT+0900 (KST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

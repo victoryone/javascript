@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.15.0.css">
+</head>
+<body>
+    <div id="qunit">4231</div>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/qunit/qunit-1.15.0.js"></script>
+    <script type="text/javascript" src="../js/common.min.js"></script>
+    <script type="text/javascript">
+        test("typecheck test", function () {
+            ok(vinyl.is("text", "string"), "문자열체크");
+            ok(vinyl.is(123, "number"), "숫자체크");
+            ok(vinyl.is([1,2, 3], "array"), "배열체크");
+            ok(vinyl.is({a:1}, "object"), "객체체크");
+            ok(vinyl.is(new Date(), "date"), "날짜형체크");
+            ok(vinyl.is(/[a-z]/, "regexp"), "정규식체크");
+            ok(vinyl.is(true, "boolean"), "부울형체크");
+            ok(vinyl.is(function(){}, "function"), "함수형체크");
+            ok(vinyl.is(document.body, "element"), "엘리먼트체크");
+            ok(vinyl.isEmpty(""), "'' 빈값");
+            //equal(vinyl.is(document.getElementById('qunit').childNodes[0], "textnode"), true);
+        });
+
+        test('number util test', function () {
+            var n = vinyl.number;
+            ok(n.pad(23, 4) === '0023', '숫자 자리수: ' + "n.pad(23, 4) === '0023'");
+            ok(n.addComma(12300) === '12,300', '숫자에 , 찍기: ' + "n.addComma(12300) === '12,300'");
+            ok(n.limit(1, 5, 10) === 5, 'number.limit(1, 5, 10) === 5');
+            ok(n.limit(6, 5, 10) === 6, 'number.limit(6, 5, 10) === 6');
+            ok(n.limit(12, 5, 10) === 10, 'number.limit(12, 5, 10) === 10');
+        });
+
+        test("string util test", function () {
+            var s = vinyl.string;
+
+            ok(s.trim(" aaa ") === "aaa", 's.trim(" aaa ") === "aaa"');
+            ok(s.replaceAll("abcabcabc", "c", "1") === "ab1ab1ab1", 's.replaceAll("abcabcabc", "c", "1") === "ab1ab1ab1"');
+            equal(s.byteLength("abcd"), 4, "'abcd' 바이트길이 = 4");
+            equal(s.byteLength("가 나 다"), 8, "'가 나 다' 바이트길이 = 8");
+            ok(s.getFileExt("usr/local/abc.def.exe") === "exe", 's.getFileExt("usr/local/abc.def.exe") === "exe"');
+            ok(s.cutByByte("동해물과 백", 7) === "동해물", 's.cutByByte("동해물과 백", 7) === "동해물"');
+            ok(s.charsByByte("동해물과 백", 7) === 3, 's.charsByByte("동해물과 백", 7) === 3');
+            ok(s.capitalize("hello world") === "Hello world", 's.capitalize("hello world") === "Hello world"');
+            ok(s.dasherize("marginTop") === "margin-top", 's.dasherize("marginTop") === "margin-top"');
+            ok(s.repeat("★", 5) === "★★★★★", 's.repeat("★", 5) === "★★★★★"');
+            ok(s.escapeHTML("<div><a href='#'>link</a></div>") === "&lt;div&gt;&lt;a href=&#39;#&#39;&gt;link&lt;/a&gt;&lt;/div&gt;", 's.escapeHTML("<div><a href=\'#\'>link</a></div>") === "&lt;div&gt;&lt;a href=&#39;#&#39;&gt;link&lt;/a&gt;&lt;/div&gt;"');
+            ok(s.unescapeHTML("&lt;div&gt;&lt;a href=&#39;#&#39;&gt;link&lt;/a&gt;&lt;/div&gt;") === "<div><a href='#'>link</a></div>", 's.unescapeHTML("&lt;div&gt;&lt;a href=&#39;#&#39;&gt;link&lt;/a&gt;&lt;/div&gt;") === "<div><a href=\'#\'>link</a></div>"');
+            ok(s.toggle("ASC", "ASC", "DESC") === "DESC", 's.toggle("ASC", "ASC", "DESC") === "DESC"');
+            ok(s.toggle("DESC", "ASC", "DESC") === "DESC", 's.toggle("ASC", "ASC", "DESC") === "ASC"');
+            ok(s.format("{0}의 생일은 {1}년 {2}월 {3}일이다.", "홍길동", 1543, 5, 4) === "홍길동의 생일은 1543년 5월 4일이다.", 's.format("{0}의 생일은 {1}년 {2}월 {3}일이다.", "홍길동", 1543, 5, 4) === "홍길동의 생일은 1543년 5월 4일이다."');
+            ok(s.sprintf("%2d %s", 2, "abc") === "02 abc", 's.sprintf("%2d %s", 2, "abc") === "02 abc"');
+            ok(s.stripTags("aqjdsjsjf<a>sskjs</a>skekdkfk") === "aqjdsjsjfsskjsskekdkfk", 's.stripTags("aqjdsjsjf<a>sskjs</a>skekdkfk") === "aqjdsjsjfsskjsskekdkfk"');
+        });
+
+        test("date util test", function () {
+            var d = vinyl.date;
+
+
+        });
+
+        window.onresize = vinyl.delayRun(function() {
+            // 리사이징이 멈추고 1초후에 발생
+            console.log('resize!!!');
+        }, 1000);
+    </script>
+</body>
+</html>

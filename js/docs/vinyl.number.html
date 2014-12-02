@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Namespace: number</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Namespace: number</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="vinyl.html">vinyl</a>.</span>
+        
+        number
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">숫자관련 유틸함수 모음</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line1068">line 1068</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    
+        <h4 class="name" id="addComma"><span class="type-signature">(static) </span>addComma<span class="signature">(value)</span><span class="type-signature"> &rarr; {String}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        세자리마다 ,를 삽입
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line1112">line 1112</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.number.addComma(21342); => "21,342"</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="limit"><span class="type-signature">(static) </span>limit<span class="signature">(value, min, max)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        상하한값을 반환. value가 min보다 작을 경우 min을, max보다 클 경우 max를 반환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>min</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">최소값</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>max</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">최대값</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line1148">line 1148</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="pad"><span class="type-signature">(static) </span>pad<span class="signature">()</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line1154">line 1154</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="random"><span class="type-signature">(static) </span>random<span class="signature">(min, max)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        min ~ max사이의 랜덤값 반환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>min</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">최소값</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>max</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">최대값</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line1132">line 1132</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    랜덤값
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="zeroPad"><span class="type-signature">(static) </span>zeroPad<span class="signature">(value, size, ch)</span><span class="type-signature"> &rarr; {String}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        주어진 수를 자릿수만큼 앞자리에 0을 채워서 반환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>size</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">(Optional: 2)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ch</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">(Optional: '0')</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line1086">line 1086</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.number.zeroPad(2, 3); => "002"</code></pre>
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="$.html">$</a></li><li><a href="vinyl.Listener.html">Listener</a></li><li><a href="vinyl.ui.View.html">View</a></li></ul><h3>Namespaces</h3><ul><li><a href="vinyl.html">vinyl</a></li><li><a href="vinyl.array.html">array</a></li><li><a href="vinyl.Base.html">Base</a></li><li><a href="vinyl.css3.html">css3</a></li><li><a href="vinyl.date.html">date</a></li><li><a href="vinyl.number.html">number</a></li><li><a href="vinyl.object.html">object</a></li><li><a href="vinyl.PubSub.html">PubSub</a></li><li><a href="vinyl.string.html">string</a></li><li><a href="vinyl.uri.html">uri</a></li><li><a href="vinyl.util.html">util</a></li><li><a href="vinyl.valid.html">valid</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addToArray">addToArray</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#hasOwn">hasOwn</a></li><li><a href="global.html#is">is</a></li><li><a href="global.html#isEmpty">isEmpty</a></li><li><a href="global.html#loadScript">loadScript</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removeToArray">removeToArray</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html#scroll%2520top%2520animate">scroll top animate</a></li><li><a href="global.html#set">set</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Tue Dec 02 2014 17:13:03 GMT+0900 (KST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

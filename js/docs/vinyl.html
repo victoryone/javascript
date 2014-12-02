@@ -1,0 +1,2871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Namespace: vinyl</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Namespace: vinyl</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        vinyl
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">root namespace of hib site</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line63">line 63</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="vinyl.Listener.html">Listener</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+     
+
+    
+        <h3 class="subsection-title">Namespaces</h3>
+
+        <dl>
+            <dt><a href="vinyl.array.html">array</a></dt>
+            <dd></dd>
+        
+            <dt><a href="vinyl.Base.html">Base</a></dt>
+            <dd></dd>
+        
+            <dt><a href="vinyl.css3.html">css3</a></dt>
+            <dd></dd>
+        
+            <dt><a href="vinyl.date.html">date</a></dt>
+            <dd></dd>
+        
+            <dt><a href="vinyl.number.html">number</a></dt>
+            <dd></dd>
+        
+            <dt><a href="vinyl.object.html">object</a></dt>
+            <dd></dd>
+        
+            <dt><a href="vinyl.PubSub.html">PubSub</a></dt>
+            <dd></dd>
+        
+            <dt><a href="vinyl.string.html">string</a></dt>
+            <dd></dd>
+        
+            <dt><a href="vinyl.uri.html">uri</a></dt>
+            <dd></dd>
+        
+            <dt><a href="vinyl.util.html">util</a></dt>
+            <dd></dd>
+        
+            <dt><a href="vinyl.valid.html">valid</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="browser"><span class="type-signature">(static) </span>browser<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        브라우저의 Detect 정보: 되도록이면 Modernizr 라이브러리를 사용할 것을 권함
+    </div>
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line461">line 461</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.browser.isOpera // 오페라vinyl.browser.isWebKit // 웹킷vinyl.browser.isIE // IEvinyl.browser.isIE6 // IE56vinyl.browser.isIE7 // IE567vinyl.browser.isOldIE // IE5678vinyl.browser.version // IE의 브라우저vinyl.browser.isChrome // 크롬vinyl.browser.isGecko // 파이어폭스vinyl.browser.isMac // 맥OSvinyl.browser.isAir // 어도비 에어vinyl.browser.isIDevice // 아이폰, 아이패드vinyl.browser.isSafari // 사파리vinyl.browser.isIETri4 // IE엔진vinyl.browser.isNotSupporte3DTransform // 안드로이드 3.0이하 3d transform지원Xvinyl.browser.isGingerbread // 안드로이드 Gingerbreadvinyl.browser.isIcecreamsandwith // 안드로이드 Icecreamsandwith</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="configs"><span class="type-signature">(private, static) </span>configs<span class="type-signature"> :Object</span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        사이트의 설정 값들이 들어갈 객체
+    </div>
+    
+
+    
+        <h5>Type:</h5>
+        <ul>
+            <li>
+                
+<span class="param-type">Object</span>
+
+
+            </li>
+        </ul>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line915">line 915</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="GlobalUI"><span class="type-signature">(static) </span>GlobalUI<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        글로벌 이벤트 정의(인쇄, 전체선택, 공유하기, 공통 UI 빌드 등)
+    </div>
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line3732">line 3732</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="openPopup"><span class="type-signature">(static) </span>openPopup<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        vinyl.util.openPopup 함수의 별칭
+    </div>
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line3193">line 3193</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="ui"><span class="type-signature">(static) </span>ui<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        ui 관련 네임스페이스
+    </div>
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line4034">line 4034</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    
+        <h4 class="name" id="addon"><span class="type-signature">(static) </span>addon<span class="signature">(name, obj)</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        vinyl 하위에 name에 해당하는 네임스페이스를 생성하여 object를 설정해주는 함수
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">.를 구분자로 해서 common를 시작으로 하위 네임스페이스를 생성. name이 없으면 emart에 추가된다.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line317">line 317</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>alert(vinyl.urls.store);alert(vinyl.urls.company);</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="clone"><span class="type-signature">(static) </span>clone<span class="signature">(obj)</span><span class="type-signature"> &rarr; {*}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        객체 복제 함수
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSON</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">배열 및 json객체</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line207">line 207</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="delayRun"><span class="type-signature">(static) </span>delayRun<span class="signature">(fn, time, scope)</span><span class="type-signature"> &rarr; {function}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        주어진 시간내에 호출이 되면 무시되고, 초과했을 때만 비로소 fn를 실행시켜주는 함수
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">콜백함수</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>time</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">딜레이시간</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>scope</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Mixin</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">컨텍스트</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line519">line 519</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">function</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>// 리사이징 중일 때는 #box의 크기를 변경하지 않다가,// 리사이징이 끝나고 0.5초가 지난 후에 #box사이즈를 변경하고자 할 경우에 사용.$(window).on('resize', vinyl.delayRun(function(){		$('#box').css('width', $(window).width()); }, 500));</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="each"><span class="type-signature">(static) </span>each<span class="signature">(obj, cb, ctx)</span><span class="type-signature"> &rarr; {*}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        반복 함수
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+|
+
+<span class="param-type">JSON</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">배열 및 json객체</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ctx</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line129">line 129</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.each({'a': '에이', 'b': '비', 'c': '씨'}, function(value, key) {    alert('key:'+key+', value:'+value);    if(key === 'b') {        return false; // false 를 반환하면 순환을 멈춘다.    }});</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="extend"><span class="type-signature">(static) </span>extend<span class="signature">()</span><span class="type-signature"> &rarr; {*}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        객체 확장 함수
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj...</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSON</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line176">line 176</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="get"><span class="type-signature">(static) </span>get<span class="signature">(name, def)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        설정값을 꺼내오는 함수
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">설정명. `.`를 구분값으로 단계별로 값을 가져올 수 있다.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>def</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">(Optional) 설정된 값이 없을 경우 사용할 기본값</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line924">line 924</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    설정값
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="getPageUrl"><span class="type-signature">(static) </span>getPageUrl<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        현재 url 반환(쿼리스트링, # 제외)
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line433">line 433</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="getUniqId"><span class="type-signature">(static) </span>getUniqId<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        15자의 숫자로 이루어진 유니크한 값 생성
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line564">line 564</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="namespace"><span class="type-signature">(static) </span>namespace<span class="signature">(name, obj)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        네임스페이스 공간을 생성하고 객체를 설정<br>.를 구분자로 하여 하위 네임스페이스가 생성된다.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">네임스페이스명</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">{Optional) 지정된 네임스페이스에 등록할 객체, 함수 등</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line279">line 279</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    생성된 네임스페이스
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.namesapce('vinyl.widget.Tabcontrol', TabControl)// 를 native로 풀면,var vinyl = {    widget: {        Tabcontrol: TabControl    }};</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="nextSeq"><span class="type-signature">(static) </span>nextSeq<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        순번으로 유니크값 을 생성해서 반환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line576">line 576</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="set"><span class="type-signature">(static) </span>set<span class="signature">(name, value)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        설정값을 지정하는 함수
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">설정명. `.`를 구분값으로 단계를 내려가서 설정할 수 있다.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">설정값</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line944">line 944</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    설정값
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="template"><span class="type-signature">(static) </span>template<span class="signature">(text, data, settings)</span><span class="type-signature"> &rarr; {function}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        템플릿 생성
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">템플릿 문자열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">템플릿 문자열에서 변환될 데이타</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>settings</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">옵션</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line596">line 596</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    tempalte 함수
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">function</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>var tmpl = vinyl.template('&amp;lt;span>&amp;lt;$=name$>&amp;lt;/span>');var html = tmpl({name: 'Axl rose'}); => &amp;lt;span>Axl rose&amp;lt;/span>$('div').html(html);</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="timeEnd"><span class="type-signature">(static) </span>timeEnd<span class="signature">(name)</span><span class="type-signature"> &rarr; {Number}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        timeStart("name")에서 지정한 해당 name값의 지난 시간을 로그에 출력해준다.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">타이머의 키값</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line400">line 400</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    걸린 시간
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Number</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.timeStart('animate');...vinyl.timeEnd('animate'); -> animate: 10203ms</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="timeStart"><span class="type-signature">(static) </span>timeStart<span class="signature">(name, reset)</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        timeStart("name")로 name값을 키로하는 타이머가 시작되며, timeEnd("name")로 해당 name값의 지난 시간을 로그에 출력해준다.
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">타이머의 키값</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>reset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">리셋(초기화) 여부</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line375">line 375</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.timeStart('animate');...vinyl.timeEnd('animate'); -> animate: 10203ms</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="toArray"><span class="type-signature">(static) </span>toArray<span class="signature">(value)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        주어진 값을 배열로 변환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Mixed</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">배열로 변환하고자 하는 값</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line545">line 545</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.toArray('abcd"); => ["a", "b", "c", "d"]vinyl.toArray(arguments);  => arguments를 객체를 array로 변환하여 Array에서 지원하는 유틸함수(slice, reverse ...)를 쓸수 있다.</code></pre>
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="$.html">$</a></li><li><a href="vinyl.Listener.html">Listener</a></li><li><a href="vinyl.ui.View.html">View</a></li></ul><h3>Namespaces</h3><ul><li><a href="vinyl.html">vinyl</a></li><li><a href="vinyl.array.html">array</a></li><li><a href="vinyl.Base.html">Base</a></li><li><a href="vinyl.css3.html">css3</a></li><li><a href="vinyl.date.html">date</a></li><li><a href="vinyl.number.html">number</a></li><li><a href="vinyl.object.html">object</a></li><li><a href="vinyl.PubSub.html">PubSub</a></li><li><a href="vinyl.string.html">string</a></li><li><a href="vinyl.uri.html">uri</a></li><li><a href="vinyl.util.html">util</a></li><li><a href="vinyl.valid.html">valid</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addToArray">addToArray</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#hasOwn">hasOwn</a></li><li><a href="global.html#is">is</a></li><li><a href="global.html#isEmpty">isEmpty</a></li><li><a href="global.html#loadScript">loadScript</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removeToArray">removeToArray</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html#scroll%2520top%2520animate">scroll top animate</a></li><li><a href="global.html#set">set</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Tue Dec 02 2014 17:13:02 GMT+0900 (KST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Namespace: object</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Namespace: object</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="vinyl.html">vinyl</a>.</span>
+        
+        object
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">JSON객체 관련 유틸함수</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2028">line 2028</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id="keys"><span class="type-signature">(static) </span>keys<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        개체의 열거가능한 속성 및 메서드 이름을 배열로 반환
+    </div>
+    
+
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2035">line 2035</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.object.keys({"name": "Axl rose", "age": 50}); => ["name", "age"]</code></pre>
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    
+        <h4 class="name" id="hasItems"><span class="type-signature">(static) </span>hasItems<span class="signature">(obj)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        요소가 있는 json객체인지 체크
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">json객체</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2099">line 2099</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    요소가 하나라도 있는지 여부
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="map"><span class="type-signature">(static) </span>map<span class="signature">(obj, cb)</span><span class="type-signature"> &rarr; {JSON}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        콜백함수로 바탕으로 각 요소를 가공하는 함수
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSON</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">배열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cb</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">콜백함수</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2083">line 2083</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSON</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.object.map({1; 'one', 2: 'two', 3: 'three'}, function(item, key) {		return item + '__';});=> {1: 'one__', 2: 'two__', 3: 'three__'}</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="remove"><span class="type-signature">(static) </span>remove<span class="signature">(value, key)</span><span class="type-signature"></span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        주어진 리터럴에서 key에 해당하는 요소를 삭제
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">리터럴</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">삭제할 키</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2174">line 2174</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    지정한 요소가 삭제된 리터럴
+</div>
+
+
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="stringify"><span class="type-signature">(static) </span>stringify<span class="signature">(val, (Optional))</span><span class="type-signature"> &rarr; {String}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        json를 문자열로 변환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>val</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSON</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">json 객체</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>opts.singleQuotes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">(Optional) 문자열을 '로 감쌀것인가</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>opts.indent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">(Optional)  들여쓰기 문자(\t or 스페이스)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>opts.nr</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">(Optional) 줄바꿈 문자(\n or 스페이스)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>(Optional)</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">pad 기호와 문자간의 간격</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2190">line 2190</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="toQueryString"><span class="type-signature">(static) </span>toQueryString<span class="signature">(obj, isEncode)</span><span class="type-signature"> &rarr; {String}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        객체를 쿼리스크링으로 변환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">문자열</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isEncode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">(Optional) URL 인코딩할지 여부</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2122">line 2122</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    결과 문자열
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.object.toQueryString({"a":1, "b": 2, "c": {"d": 4}}); => "a=1&amp;b=2&amp;c[d]=4"</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="traverse"><span class="type-signature">(static) </span>traverse<span class="signature">(obj)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        주어진 배열를 키와 요소를 맞바꿔주는 함수
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">배열</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2159">line 2159</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.object.travere({1:a, 2:b, 3:c, 4:d]);=> {a:1, b:2, c:3, d:4}</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    
+        <h4 class="name" id="values"><span class="type-signature">(static) </span>values<span class="signature">(obj)</span><span class="type-signature"> &rarr; {Array}</span></h4>
+
+        
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        개체의 열거가능한 속성의 값을 배열로 반환
+    </div>
+    
+
+    
+
+    
+
+    
+
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">리터럴 객체</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+    
+
+    
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="common.concat.js.html">common.concat.js</a>, <a href="common.concat.js.html#line2052">line 2052</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    객체의 열거가능한 속성의 값들이 포함된 배열
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array</span>
+
+
+    </dd>
+</dl>
+
+        
+
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>vinyl.object.values({"name": "Axl rose", "age": 50}); => ["Axl rose", 50]</code></pre>
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="$.html">$</a></li><li><a href="vinyl.Listener.html">Listener</a></li><li><a href="vinyl.ui.View.html">View</a></li></ul><h3>Namespaces</h3><ul><li><a href="vinyl.html">vinyl</a></li><li><a href="vinyl.array.html">array</a></li><li><a href="vinyl.Base.html">Base</a></li><li><a href="vinyl.css3.html">css3</a></li><li><a href="vinyl.date.html">date</a></li><li><a href="vinyl.number.html">number</a></li><li><a href="vinyl.object.html">object</a></li><li><a href="vinyl.PubSub.html">PubSub</a></li><li><a href="vinyl.string.html">string</a></li><li><a href="vinyl.uri.html">uri</a></li><li><a href="vinyl.util.html">util</a></li><li><a href="vinyl.valid.html">valid</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addToArray">addToArray</a></li><li><a href="global.html#get">get</a></li><li><a href="global.html#hasOwn">hasOwn</a></li><li><a href="global.html#is">is</a></li><li><a href="global.html#isEmpty">isEmpty</a></li><li><a href="global.html#loadScript">loadScript</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#removeToArray">removeToArray</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html#scroll%2520top%2520animate">scroll top animate</a></li><li><a href="global.html#set">set</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha10</a> on Tue Dec 02 2014 17:13:03 GMT+0900 (KST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

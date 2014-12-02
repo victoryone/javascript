@@ -1,0 +1,81 @@
+//
+// import normalize for CSS resets
+@import "normalize";  // same as @import “normalize.less”;
+
+// import mixins for all of my "global" variables and mixins
+@import "mixins";
+
+// base for mobile devices
+@import "../base.css";
+
+@defaultFontSize: 20px; // default font size
+@defaultWidth: 500px;
+@padding: 20px;
+@color: #c8c8fc;
+@var: 'color';
+
+.makeBox(@boxWidth: 100px) {
+  border-radius: 10px;
+  background-color: #f49ac1;
+  width: @boxWidth;
+  height: 100px;
+  custom: @@var;
+}
+
+header {
+  font-size: @defaultFontSize;
+  width: @defaultWidth - (@padding * 2);
+  background-color: #B4CCB9;
+  padding: @padding;
+  height: 200px;
+  .logo {
+    width: 200px;
+  }
+  .search {
+    input {
+      width: 100 px;
+      &:focus {
+        color: red;
+      }
+    }
+  }
+}
+footer {
+  div{
+    .makeBox(500px);
+  }
+}
+
+article {
+  .makeBox
+}
+
+a {
+  &:hover { color: red; } // &은 자기자신
+  &:active { color: blue; }
+  text-decoration: underline;
+}
+
+section {
+  width: @defaultWidth - (@padding * 2);
+  padding: @padding;
+}
+
+div {
+  height: 20px;
+}
+// 그라이데이션 효과
+div:nth-child(1) { background: darken(@color, 0%); }
+div:nth-child(2) { background: darken(@color, 10%); }
+div:nth-child(3) { background: darken(@color, 20%); }
+div:nth-child(4) { background: darken(@color, 30%); }
+
+//tablets
+@media only screen and (min-width: 768px) {
+  @import "768";
+}
+
+//desktops
+@media only screen and (min-width: 1030px) {
+  @import "1030";
+}
