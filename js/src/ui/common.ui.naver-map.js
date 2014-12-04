@@ -61,7 +61,7 @@
 		/**
 		 * 생성자
 		 * @param {Element|jQuery|String} 엘리먼트
-		 * @param {JSON} options 옵션
+		 * @param {Object} options 옵션
 		 */
 		initialize: function(el, options) {
 			var me = this;
@@ -201,7 +201,7 @@
 
 		/**
 		 * 지점정보 검색
-		 * @param {JSON} obj 검색할 지점정보
+		 * @param {Object} obj 검색할 지점정보
 		 */
 		find: function(obj) {
 			var me = this,
@@ -219,8 +219,8 @@
         
 		/**
 		 * 지도사이즈 설정
-		 * @param {JSON} size.height 높이
-		 * @param {JSON} size.width 너비
+		 * @param {Object} size.height 높이
+		 * @param {Object} size.width 너비
 		 */
         setSize: function(size) {
             this.map.setSize(new _map.Size(size.width, size.height));
@@ -232,8 +232,8 @@
 
 		/**
 		 * 지정한 좌표로 중심을 이동
-		 * @param {JSON} oPoint.x x좌표
-		 * @param {JSON} oPoint.y y좌표
+		 * @param {Object} oPoint.x x좌표
+		 * @param {Object} oPoint.y y좌표
 		 */
 		setCenter: function(oPoint) {
 			if(!(oPoint instanceof _map.LatLng)) {
@@ -244,7 +244,7 @@
 
 		/** 
 		 * 지정한 지점id에 해당하는 지점을 중심으로 이동
-		 * @param {String} id 지점 id
+		 * @param {string} id 지점 id
 		 */
 		setCenterById: function(id) {
 			var item = this.find({storeId: id});
@@ -277,7 +277,7 @@
 
 		/**
 		 * 지점마커 추가
-		 * @param {JSON} item 지점정보
+		 * @param {Object} item 지점정보
 		 */
 		addMarker: function(item) {		
 			if(this.find({x: item.x, y: item.y})) { return; }

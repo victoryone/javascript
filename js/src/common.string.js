@@ -42,10 +42,10 @@
             /**
              * 정규식이나 검색문자열을 사용하여 문자열에서 텍스트를 교체
              *
-             * @param {String} value 교체를 수행할 문자열
+             * @param {string} value 교체를 수행할 문자열
              * @param {RegExp|String} find 검색할 문자열이나 정규식 패턴
-             * @param {String} rep 대체할 문자열
-             * @return {String} 대체된 결과 문자열
+             * @param {string} rep 대체할 문자열
+             * @return {string} 대체된 결과 문자열
              *
              * @example
              * vinyl.replaceAll("a1b2c3d", /[0-9]/g, ''); => "abcd"
@@ -60,8 +60,8 @@
             /**
              * 주어진 문자열의 바이트길이 반환
              *
-             * @param {String} value 길이를 계산할 문자열
-             * @return {Number}
+             * @param {string} value 길이를 계산할 문자열
+             * @return {number}
              *
              * @example
              * vinyl.byteLength("동해물과"); => 8
@@ -76,8 +76,8 @@
 
             /**
              * 주어진 path에서 확장자를 추출
-             * @param {String} fname path문자열
-             * @return {String} 확장자
+             * @param {string} fname path문자열
+             * @return {string} 확장자
              */
             getFileExt: function(fname){
                 fname || (fname = '');
@@ -87,10 +87,10 @@
             /**
              * 주어진 문자열을 지정된 길이(바이트)만큼 자른 후, 꼬리글을 덧붙여 반환
              *
-             * @param {String} value 문자열
-             * @param {Number} length 잘라낼 길이
-             * @param {String} truncation (Optional: '...') 꼬리글
-             * @return {String} 결과 문자열
+             * @param {string} value 문자열
+             * @param {number} length 잘라낼 길이
+             * @param {string} truncation (Optional: '...') 꼬리글
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.cutByByte("동해물과", 3, "..."); => "동..."
@@ -109,9 +109,9 @@
             /**
              * 주어진 바이트길이에 해당하는 char index 반환
              *
-             * @param {String} value 문자열
-             * @param {Number} length 제한 문자수
-             * @return {Number} chars count
+             * @param {string} value 문자열
+             * @param {number} length 제한 문자수
+             * @return {number} chars count
              */
             charsByByte: function (value, length) {
                 var str = value,
@@ -126,8 +126,8 @@
             /**
              * 첫글자를 대문자로 변환하고 이후의 문자들은 소문자로 변환
              *
-             * @param {String} value 문자열
-             * @return {String} 결과 문자열
+             * @param {string} value 문자열
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.capitalize("abCdEfg"); => "Abcdefg"
@@ -139,8 +139,8 @@
             /**
              * 카멜 형식으로 변환
              *
-             * @param {String} value 문자열
-             * @return {String} 결과 문자열
+             * @param {string} value 문자열
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.capitalize("ab-cd-efg"); => "abCdEfg"
@@ -154,8 +154,8 @@
             /**
              * 대쉬 형식으로 변환
              *
-             * @param {String} value 문자열
-             * @return {String} 결과 문자열
+             * @param {string} value 문자열
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.dasherize("abCdEfg"); => "ab-cd-efg"
@@ -166,7 +166,7 @@
 
             /**
              * 첫글자를 소문자로 변환하고 이후의 모든 문자를 소문자로 변환
-             * @param {String} value
+             * @param {string} value
              * @returns {string}
              */
             toFirstLower: function (value) {
@@ -176,9 +176,9 @@
             /**
              * 주어진 문자열을 지정한 수만큼 반복하여 조합
              *
-             * @param {String} value 문자열
-             * @param {Number} cnt 반복 횟수
-             * @return {String} 결과 문자열
+             * @param {string} value 문자열
+             * @param {number} cnt 반복 횟수
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.repeat("ab", 4); => "abababab"
@@ -196,8 +196,8 @@
             /**
              * 특수기호를 HTML ENTITY로 변환
              *
-             * @param {String} value 특수기호
-             * @return {String} 결과 문자열
+             * @param {string} value 특수기호
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.escapeHTML('<div><a href="#">링크</a></div>'); => "&lt;div&gt;&lt;a href=&quot;#&quot;&gt;링크&lt;/a&gt;&lt;/div&gt;"
@@ -211,8 +211,8 @@
             /**
              * HTML ENTITY로 변환된 문자열을 원래 기호로 변환
              *
-             * @param {String} value 문자열
-             * @return {String} 결과 문자열
+             * @param {string} value 문자열
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.unescapeHTML('&lt;div&gt;&lt;a href=&quot;#&quot;&gt;링크&lt;/a&gt;&lt;/div&gt;');  => '<div><a href="#">링크</a></div>'
@@ -226,10 +226,10 @@
             /**
              * value === these이면 other를,  value !== these 이면 value를 반환
              *
-             * @param {String} value 현재 상태값
-             * @param {String} these 첫번째 상태값
-             * @param {String} other 두번째 상태값
-             * @return {String}
+             * @param {string} value 현재 상태값
+             * @param {string} these 첫번째 상태값
+             * @param {string} other 두번째 상태값
+             * @return {string}
              *
              * @example
              * // 정렬버튼에 이용
@@ -243,9 +243,9 @@
             /**
              * 주어진 문자열에 있는 {인덱스} 부분을 주어진 인수에 해당하는 값으로 치환 후 반환
              *
-             * @param {String} format 문자열
-             * @param {String} ... 대체할 문자열
-             * @return {String} 결과 문자열
+             * @param {string} format 문자열
+             * @param {string} ... 대체할 문자열
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.format("{0}:{1}:{2} {0}", "a", "b", "c");  => "a:b:c a"
@@ -263,8 +263,8 @@
              * 형식문자열을 주어진 인자값으로 치환하여 반환
              * @function
              * @name vinyl.string.sprintf
-             * @param {String} str 형식문자열(%d, %f, %s)
-             * @param {Mixins} ... 형식문자열에 지정된 형식에 대치되는 값
+             * @param {string} str 형식문자열(%d, %f, %s)
+             * @param {Object} ... 형식문자열에 지정된 형식에 대치되는 값
              * @example
              * var ret = vinyl.string.sprintf('%2d %s', 2, 'abc'); // => '02 abc'
              */
@@ -344,8 +344,8 @@
             /**
              * 주어진 문자열에서 HTML를 제거
              *
-             * @param {String} value 문자열
-             * @return {String}
+             * @param {string} value 문자열
+             * @return {string}
              */
             stripTags: function (value) {
                 return value.replace(tagRegexp, '');
@@ -354,8 +354,8 @@
             /**
              * 주어진 문자열에서 스크립트를 제거
              *
-             * @param {String} value 문자열
-             * @return {String}
+             * @param {string} value 문자열
+             * @return {string}
              */
             stripScripts: function (value) {
                 return value.replace(scriptRegexp, '');
@@ -364,4 +364,4 @@
         };
     });
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

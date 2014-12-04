@@ -31,8 +31,8 @@
             /**
              * 필수입력 체크
              *
-             * @param {String} str
-             * @return {Boolean} 빈값이면 false 반환
+             * @param {string} str
+             * @return {boolean} 빈값이면 false 반환
              */
             require: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -41,8 +41,8 @@
             /**
              * 유효한 이메일형식인지 체크
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             email: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -51,8 +51,8 @@
             /**
              * 한글인지 체크
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             kor: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -61,8 +61,8 @@
             /**
              * 영문 체크
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             eng: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -71,8 +71,8 @@
             /**
              * 숫자 체크(실제 숫자타입인가)
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             rawNum: function (str) {
                 isElement(str) && (str = str.value); // 엘리먼인 경우 .value에서 꺼내온다.
@@ -82,9 +82,9 @@
             /**
              * 숫자 체크
              *
-             * @param {String} str
-             * @param {Boolean} allowSign (optional)  없으면 -, +기호를 허용안함, true이면 -, + 허용함
-             * @return {Boolean}
+             * @param {string} str
+             * @param {boolean} allowSign (optional)  없으면 -, +기호를 허용안함, true이면 -, + 허용함
+             * @return {boolean}
              */
             num: function (str, allowSign) {
                 isElement(str) && (str = str.value); // 엘리먼인 경우 .value에서 꺼내온다.
@@ -96,8 +96,8 @@
             /**
              * 유효한 url형식인지 체크
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             url: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -106,8 +106,8 @@
             /**
              * 특수기호 유무 체크
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             special: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -116,8 +116,8 @@
             /**
              * 유효한 전화번호형식인지 체크
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             phone: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -137,8 +137,8 @@
              * 날짜가 유효한지 체크(20130212, 2013-12-12, 2013-12-12 23:12:12 모두 체크 가능)
              *
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             date: function(str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -157,8 +157,8 @@
              * 유효한 yyyy-MM-dd형식인지 체크(삭제 예정)
              *
              * @deprecated
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             dateYMD: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -168,8 +168,8 @@
              * 유효한 yyyy-MM-dd hh:mm:ss형식인지 체크(삭제 예정)
              *
              * @deprecated
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             dateYMDHMS: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -178,9 +178,9 @@
             /**
              * 유효한 주민번호인지 체크
              *
-             * @param {String} strSsn1 앞주민번호.
-             * @param {String} strSsn2 (Optional) 뒷주민번호. 값이 없으면 strSsn1만으로 체크
-             * @return {Boolean}
+             * @param {string} strSsn1 앞주민번호.
+             * @param {string} strSsn2 (Optional) 뒷주민번호. 값이 없으면 strSsn1만으로 체크
+             * @return {boolean}
              */
             SSN: function (sid1, sid2) {
                 var num = sid1 + (sid2 ? sid2 : ""),
@@ -204,9 +204,9 @@
             /**
              * 유효한 외국인주민번호인지 체크
              *
-             * @param {String} strSsn1 앞주민번호.
-             * @param {String} strSsn2 (Optional) 뒷주민번호. 값이 없으면 strSsn1만으로 체크
-             * @return {Boolean}
+             * @param {string} strSsn1 앞주민번호.
+             * @param {string} strSsn2 (Optional) 뒷주민번호. 값이 없으면 strSsn1만으로 체크
+             * @return {boolean}
              */
             FgnSSN: function (sid1, sid2) {
                 var num = sid1 + (sid2 ? sid2 : ""),
@@ -249,4 +249,4 @@
         };
     });
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

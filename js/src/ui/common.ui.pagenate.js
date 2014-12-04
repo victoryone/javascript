@@ -182,7 +182,7 @@
 
         /**
          * UI 새로고침
-         * @param {JSON} options 변경할 옵션
+         * @param {Object} options 변경할 옵션
          */
         update: function(options) {
             var me = this;
@@ -201,4 +201,4 @@
     ///////////////////////////////////////////////////////////////////////////////////////
 
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

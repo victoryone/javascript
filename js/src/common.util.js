@@ -126,18 +126,10 @@
             },
 
             /**
-             * 팝업의 사이즈를 $el 사이즈에 맞게 조절
-             */
-            resizePopup: function($el) {
-                if (!($el instanceof jQuery)) { $el = $($el); }
-                window.resizeTo($el.width(), $el.height());
-            },
-
-            /**
              * 팝업의 사이즈에 따른 화면상의 중앙 위치좌표를 반환
              * @param {number} w 너비.
              * @param {number} h 높이.
-             * @return {JSON} {left: 값, top: 값}
+             * @return {Object} {left: 값, top: 값}
              */
             popupCoords: function (w, h) {
                 var wLeft = window.screenLeft ? window.screenLeft : window.screenX,
@@ -149,43 +141,6 @@
                     left: wLeft + (wWidth / 2) - (w / 2),
                     top: wTop + (wHeight / 2) - (h / 2) - 25
                 };
-            },
-
-            /**
-             * data-src에 있는 이미지주소를 실제로 불러들인 다음, 주어진 사이즈내에서 가운데에 배치시켜주는 함수
-             * @param {jQuery} $imgs
-             * @param {Number} wrapWidth 최대 너비 값
-             * @param {Number} wrapHeight 최대 높이 값
-             * @param {Function} [onError] (optional) 이미지를 불어오지 못했을 경우 실행할 콜백함수
-             * @return {Boolean} true 불러들인 이미지가 있었는지 여부
-             */
-            centeringImage: function ($imgs, wrapWidth, wrapHeight, onError) {
-                var hasLazyImage = false;
-                var dataSrcAttr = 'data-src';
-
-                $imgs.filter('img[data-src]').each(function(i) {
-                    var $img = $(this);
-                    wrapWidth = wrapWidth || $img.parent().width();
-                    wrapHeight = wrapHeight || $img.parent().height();
-
-                    // 이미지가 로드되면, 실제 사이즈를 체크해서 가로이미지인지 세로이미지인지에 따라 기준이 되는 width, height에 지정한다.
-                    $img.one('load', function() {
-                        $img.removeAttr('width height').css({'width':'auto', 'height':'auto'});
-                        if ($img.attr('data-no-height') === 'true' && this.width > wrapWidth) {
-                            $img.css('width', wrapWidth);
-                        } else if ($img.attr('data-no-width') === 'true' && this.height > wrapHeight) {
-                            $img.css('height', wrapWidth);
-                        } else {
-                            var isHoriz = this.width > this.height;
-                            if ( isHoriz ) { // 가로로 긴 이미지
-                                $img.css('width', Math.min(this.width, wrapWidth));
-                            } else { // 세로로 긴 이미지
-                                $img.css('height', Math.min(this.height, wrapHeight));
-                            }
-                        }
-                    }).attr('src', $img.attr('data-src')).removeAttr('data-src');
-                });
-                return hasLazyImage;
             },
 
             /**
@@ -281,7 +236,7 @@
 
             /**
              * 도큐먼트의 높이를 반환
-             * @return {Number}
+             * @return {number}
              */
             getDocHeight: function() {
                 var doc = document,
@@ -297,7 +252,7 @@
 
             /**
              * 도큐먼트의 너비를 반환
-             * @return {Number}
+             * @return {number}
              */
             getDocWidth: function() {
                 var doc = document,
@@ -312,7 +267,7 @@
 
             /**
              * 창의 너비를 반환
-             * @return {Number}
+             * @return {number}
              */
             getWinWidth : function() {
                 var w = 0;
@@ -328,7 +283,7 @@
 
             /**
              * 창의 높이를 반환
-             * @return {Number}
+             * @return {number}
              */
             getWinHeight : function() {
                 var w = 0;
@@ -380,7 +335,7 @@
             /**
              * 주어진 요소의 사이즈 & 위치를 반환
              * @param elem
-             * @returns {JSON} {width: 너비, height: 높이, offset: { top: 탑위치, left: 레프트위치}}
+             * @returns {Object} {width: 너비, height: 높이, offset: { top: 탑위치, left: 레프트위치}}
              */
             getDimensions: function( elem ) {
                 var el = elem[0];
@@ -464,7 +419,7 @@
             /**
              * 팝업 뛰우기
              */
-            openPopup2: function(url, feature, callback) {
+            openPopupAndExec: function(url, feature, callback) {
                 feature = $.extend(feature,  {
                     name: 'popupWin',
                     width: 600,
@@ -507,55 +462,6 @@
                     fn();
                 }
             }
-            /**
-             *
-             * @param {String} scriptUrl URL
-             * @param {Function} [callback] 콜백
-             * @return {Deferred} deferred
-             */
-            /*
-             loadScript: (function() {
-             var doc = document,
-             loaded = {};
-
-             return function(url, callback) {
-             var defer = $.Deferred();
-             if(loaded[url]){
-             callback&&callback();
-             defer.resolve(url)
-             return defer.promise();
-             }
-
-             var script = document.createElement('script');
-
-             script.type = 'text/javascript';
-             script.async = true;
-
-             script.onerror = function() {
-             defer.reject(url);
-             //throw new Error(url + ' not loaded');
-             };
-
-             script.onreadystatechange = script.onload = function (e) {
-             e = context.event || e;
-
-             if (e.type == 'load' || this.readyState.test(/loaded|complete/)) {
-             this.onreadystatechange = null;
-             callback&&callback();
-             defer.resolve(url);
-             }
-             };
-
-             script.src = url;
-             doc.getElementsByTagName('head')[0].appendChild(script);
-             return defer.promise();
-             };
-             })()*/
         };
     });
-    /**
-     * vinyl.util.openPopup 함수의 별칭
-     * @name vinyl.openPopup
-     */
-    core.openPopup = core.util.openPopup;
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

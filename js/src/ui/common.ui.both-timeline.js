@@ -20,8 +20,8 @@
 			itemSelector: '>div>ul>li'
 		},
         /**
-         * @param {Mixed} el
-         * @param {JSON} options (Optional) = this.defaults
+         * @param {*} el
+         * @param {Object} options (Optional) = this.defaults
          */
 		initialize: function(el, options) {
 			var me = this;
@@ -44,7 +44,7 @@
 
 		/**
 		 * 각 요소들의 위치를 잡아준다.
-		 * @param {Number} 몇번째부터 배치할 것인가..(더보기시에 사용)
+		 * @param {number} 몇번째부터 배치할 것인가..(더보기시에 사용)
 		 */
 		update: function(start) {
 			// 내부 이미지들이 다 불러질 때까지 기다렸다가 배치시킨다.

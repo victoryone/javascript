@@ -84,14 +84,14 @@
             /**
              * 현재 브라우저의 css prefix명 (webkit or Moz or ms or O)
              * @function
-             * @return {String}
+             * @return {string}
              */
             vendor: _vendor,
             /**
              * 주어진 css속성을 지원하는지 체크
              *
-             * @param {String} cssName 체크하고자 하는 css명
-             * @return {Boolean} 지원여부
+             * @param {string} cssName 체크하고자 하는 css명
+             * @return {boolean} 지원여부
              * @example
              * if(vinyl.css3.has('transform')) { ...
              */
@@ -111,8 +111,8 @@
              * 주어진 css명 앞에 현재 브라우저에 해당하는 벤더prefix를 붙여준다.
              *
              * @function
-             * @param {String} cssName css명
-             * @return {String}
+             * @param {string} cssName css명
+             * @return {string}
              * @example
              * vinyl.css3.prefix('transition'); // => webkitTransition
              */
@@ -132,4 +132,4 @@
             }
         };
     });
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

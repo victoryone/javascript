@@ -5,21 +5,30 @@
  * @license MIT License
  */
 
-window.FRAMEWORK_NAME = 'vinyl';
+window.LIB_NAME = 'vinyl';
  /*
- *	
+ *
  */
 (function (context, $, undefined) {
     "use strict";
     /* jshint expr: true, validthis: true */
     /* global vinyl, alert, escape, unescape */
 
+    /**
+     * @callback arrayCallback
+     * @param  {*} item - 배열의 요소
+     * @param  {number} index   - 배열의 인덱스
+     * @param  {Array}  array   - 배열 자신
+     * @return {boolean} false를 반환하면 반복을 멈춘다.
+     */
+
+
     if(!$) {
         throw new Error("This library requires jQuery");
     }
 
     // 프레임웍 이름
-    var FRAMEWORK_NAME = window.FRAMEWORK_NAME || 'vinyl';
+    var LIB_NAME = window.LIB_NAME || 'vinyl';
 
     var $root = $(document.documentElement).addClass('js');
     ('ontouchstart' in context) && $root.addClass('touch');
@@ -29,7 +38,8 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 함수내의 컨텐스트를 지정
          * @param {Object} context 컨텍스트
-         * @param {Mixed} ... 두번째 인자부터는 실제로 싱행될 콜백함수로 전달된다.
+         * @param {*} ... 두번째 인자부터는 실제로 싱행될 콜백함수로 전달된다.
+         * @return {Function} 주어진 객체가 켄텍스트로 적용된 함수
          * @example
          * function Test() {
          *      alert(this.name);
@@ -52,10 +62,23 @@ window.FRAMEWORK_NAME = 'vinyl';
     }
 
     if (!window.console) {
+        // 콘솔을 지원하지 않는 브라우저를 위해 출력요소를 생성
         window.console = {};
+        if(window.LIB_DIV_DEBUG === true) {
+            window.$debugDiv = $('<div class="d-debug" style=""></div>');
+            $(function () {
+                window.$debugDiv.appendTo('body');
+            });
+        }
         var consoleMethods = ['log', 'info', 'warn', 'error', 'assert', 'dir', 'clear', 'profile', 'profileEnd'];
         for(var i = -1, method; method = consoleMethods[++i]; ) {
-            console[method] = function () { };
+            +function(method) {
+                console[method] = window.LIB_DIV_DEBUG === true ?
+                    function () {
+                        window.$debugDiv.append('<div style="font-size:9pt;">&gt; <span>[' + method + ']</span> ' + [].slice.call(arguments).join(', ') + '</div>');
+                    } : function () {
+                };
+            }(method);
         }
     }
 
@@ -65,18 +88,13 @@ window.FRAMEWORK_NAME = 'vinyl';
      * @name vinyl
      * @description root namespace of hib site
      */
-    var core = context[ FRAMEWORK_NAME ] || (context[ FRAMEWORK_NAME ] = {});
+    var core = context[ LIB_NAME ] || (context[ LIB_NAME ] = {});
     var arrayProto = Array.prototype,
         objectProto = Object.prototype,
         toString = objectProto.toString,
         hasOwn = objectProto.hasOwnProperty,
         arraySlice = arrayProto.slice,
-        doc = document,
-        emptyFn = function () {},
 
-        /**
-         * 주어진 값이 json형인가
-         */
         isPlainObject = (toString.call(null) === '[object Object]') ? function (value) {
             return value !== null
                 && value !== undefined
@@ -130,9 +148,9 @@ window.FRAMEWORK_NAME = 'vinyl';
          * 반복 함수
          * @function
          * @name vinyl.each
-         * @param {Array|JSON} obj 배열 및 json객체
-         * @param {function(this:Array|Object, value, index)} cb
-         * @param {Object} ctx
+         * @param {Array|Object} obj 배열 및 json객체
+         * @param {arrayCallback} cb 콜백함수
+         * @param {*} [ctx] 컨텍스트
          * @returns {*}
          * @example
          * vinyl.each({'a': '에이', 'b': '비', 'c': '씨'}, function(value, key) {
@@ -177,7 +195,7 @@ window.FRAMEWORK_NAME = 'vinyl';
          * 객체 확장 함수
          * @function
          * @name vinyl.extend
-         * @param {JSON} obj...
+         * @param {Object} obj...
          * @returns {*}
          */
         extend = function(deep, obj) {
@@ -208,7 +226,7 @@ window.FRAMEWORK_NAME = 'vinyl';
          * 객체 복제 함수
          * @function
          * @name vinyl.clone
-         * @param {JSON} obj 배열 및 json객체
+         * @param {Object} obj 배열 및 json객체
          * @returns {*}
          */
         clone = function(obj) {
@@ -240,7 +258,7 @@ window.FRAMEWORK_NAME = 'vinyl';
 
 
     extend(core, {
-    	name: FRAMEWORK_NAME,
+    	name: LIB_NAME,
     	debug: false,
         each: each,
         extend: extend,
@@ -249,9 +267,9 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 타입 체크
          * @function
-         * @param {Mixins} o 타입을 체크할 값
-         * @param {String} typeName 타입명(null, number, string, element, nan, infinity, date, array)
-         * @return {Boolean}
+         * @param {Object} o 타입을 체크할 값
+         * @param {string} typeName 타입명(null, number, string, element, nan, infinity, date, array)
+         * @return {boolean}
          */
         is: isType,
 
@@ -259,8 +277,8 @@ window.FRAMEWORK_NAME = 'vinyl';
          * 주어진 인자가 빈값인지 체크
          *
          * @param {Object} value 체크할 문자열
-         * @param {Boolean} allowEmptyString (Optional: false) 빈문자를 허용할 것인지 여부
-         * @return {Boolean}
+         * @param {boolean} allowEmptyString (Optional: false) 빈문자를 허용할 것인지 여부
+         * @return {boolean}
          */
         isEmpty: function (value, allowEmptyString) {
             return (value === null) || (value === undefined) || (!allowEmptyString ? value === '' : false) || (core.is(value, 'array') && value.length === 0);
@@ -270,8 +288,8 @@ window.FRAMEWORK_NAME = 'vinyl';
          * 객체 자체에 주어진 이름의 속성이 있는지 조회
          *
          * @param {Object} obj 객체
-         * @param {String} name 키 이름
-         * @return {Boolean} 키의 존재 여부
+         * @param {string} name 키 이름
+         * @return {boolean} 키의 존재 여부
          */
         hasOwn: function (obj, name) {
             return hasOwn.call(obj, name);
@@ -283,9 +301,9 @@ window.FRAMEWORK_NAME = 'vinyl';
          * @function
          * @name vinyl.namespace
          *
-         * @param {String} name 네임스페이스명
-         * @param {Object} obj {Optional) 지정된 네임스페이스에 등록할 객체, 함수 등
-         * @return {Object} 생성된 네임스페이스
+         * @param {string} name 네임스페이스명
+         * @param {Object} [obj] 지정된 네임스페이스에 등록할 객체, 함수 등
+         * @return {Object} 생성된 새로운 네임스페이스
          *
          * @example
          * vinyl.namesapce('vinyl.widget.Tabcontrol', TabControl)
@@ -320,7 +338,7 @@ window.FRAMEWORK_NAME = 'vinyl';
          * @function
          * @name vinyl.addon
          *
-         * @param {String} name .를 구분자로 해서 common를 시작으로 하위 네임스페이스를 생성. name이 없으면 emart에 추가된다.
+         * @param {string} name .를 구분자로 해서 common를 시작으로 하위 네임스페이스를 생성. name이 없으면 emart에 추가된다.
          * @param {Object|Function} obj
          *
          * @example
@@ -338,7 +356,7 @@ window.FRAMEWORK_NAME = 'vinyl';
                 obj = obj.call(null, core);
             }
 
-            name = FRAMEWORK_NAME + (name ? '.' + name : '');
+            name = LIB_NAME + (name ? '.' + name : '');
             return this.namespace(name, obj);
         }
     });
@@ -364,8 +382,8 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * timeStart("name")로 name값을 키로하는 타이머가 시작되며, timeEnd("name")로 해당 name값의 지난 시간을 로그에 출력해준다.
          *
-         * @param {String} name 타이머의 키값
-         * @param {Boolean} reset 리셋(초기화) 여부
+         * @param {string} name 타이머의 키값
+         * @param {boolean} reset 리셋(초기화) 여부
          *
          * @example
          * vinyl.timeStart('animate');
@@ -389,8 +407,8 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * timeStart("name")에서 지정한 해당 name값의 지난 시간을 로그에 출력해준다.
          *
-         * @param {String} name 타이머의 키값
-         * @return {Number} 걸린 시간
+         * @param {string} name 타이머의 키값
+         * @return {number} 걸린 시간
          *
          * @example
          * vinyl.timeStart('animate');
@@ -440,23 +458,27 @@ window.FRAMEWORK_NAME = 'vinyl';
          * 브라우저의 Detect 정보: 되도록이면 Modernizr 라이브러리를 사용할 것을 권함
          *
          * @example
-         * vinyl.browser.isOpera // 오페라
-         * vinyl.browser.isWebKit // 웹킷
-         * vinyl.browser.isIE // IE
-         * vinyl.browser.isIE6 // IE56
-         * vinyl.browser.isIE7 // IE567
-         * vinyl.browser.isOldIE // IE5678
-         * vinyl.browser.version // IE의 브라우저
-         * vinyl.browser.isChrome // 크롬
-         * vinyl.browser.isGecko // 파이어폭스
+         * vinyl.browser.isTouch // 터치디바이스 여부
+         * vinyl.browser.isRetina // 레티나 여부
+         * vinyl.browser.isMobile // orientation 작동여부로 판단
          * vinyl.browser.isMac // 맥OS
-         * vinyl.browser.isAir // 어도비 에어
-         * vinyl.browser.isIDevice // 아이폰, 아이패드
+         * vinyl.browser.isLinux // 리눅스
+         * vinyl.browser.isWin // 윈도우즈
+         * vinyl.browser.is64Bit // 64비트 플랫폼
+         *
+         * vinyl.browser.isIE // IE
+         * vinyl.browser.version // IE의 브라우저
+         * vinyl.browser.isOpera // 오페라
+         * vinyl.browser.isChrome // 크롬
          * vinyl.browser.isSafari // 사파리
+         * vinyl.browser.isWebKit // 웹킷
+         * vinyl.browser.isGecko // 파이어폭스
          * vinyl.browser.isIETri4 // IE엔진
-         * vinyl.browser.isNotSupporte3DTransform // 안드로이드 3.0이하 3d transform지원X
-         * vinyl.browser.isGingerbread // 안드로이드 Gingerbread
-         * vinyl.browser.isIcecreamsandwith // 안드로이드 Icecreamsandwith
+         * vinyl.browser.isAir // 어도비 에어
+         * vinyl.browser.isIOS // 아이폰, 아이패드
+         * vinyl.browser.isAndroid // 안드로이드
+         * vinyl.browser.iosVersion // ios 버전 : [8, 1, 0] -> [major, minor, revision]
+         * vinyl.browser.androidVersion // android 버전 : [4, 1, 0] -> [major, minor, revision]
          */
         browser: (function () {
             // 아 정리하고 싶당..
@@ -495,9 +517,15 @@ window.FRAMEWORK_NAME = 'vinyl';
 
 
 			if(detect.isAndroid) {
-				detect.androidVersion = (function(match){ if(match){ return match[1]|0; } else { return 0; } })(lua.match(/android ([\w.]+)/));
+				detect.androidVersion = +function () {
+                    var v = (na).match(/[a|A]ndroid[^\d]*(\d+).?(\d+)?.?(\d+)?/);
+                    return [parseInt(v[1], 10), parseInt(v[2] || 0, 10), parseInt(v[3] || 0, 10)];
+                }();
 			} else if(detect.isIOS) {
-				detect.iosVersion = (function(match){ if(match){ return match[1]|0; } else { return 0; } })(ua.match(/OS ([[0-9]+)/));
+                detect.iosVersion = +function () {
+                    var v = (na).match(/OS (\d+)_?(\d+)?_?(\d+)?/);
+                    return [parseInt(v[1], 10), parseInt(v[2] || 0, 10), parseInt(v[3] || 0, 10)];
+                }();
 			}
 
             return detect;
@@ -506,8 +534,8 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 주어진 시간내에 호출이 되면 무시되고, 초과했을 때만 비로소 fn를 실행시켜주는 함수
          * @param {Function} fn 콜백함수
-         * @param {Number} time 딜레이시간
-         * @param {Mixin} scope 컨텍스트
+         * @param {number} time 딜레이시간
+         * @param {*} scope 컨텍스트
          * @returns {Function}
 		 * @example
 		 * // 리사이징 중일 때는 #box의 크기를 변경하지 않다가,
@@ -535,7 +563,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 주어진 값을 배열로 변환
          *
-         * @param {Mixed} value 배열로 변환하고자 하는 값
+         * @param {*} value 배열로 변환하고자 하는 값
          * @return {Array}
          *
          * @example
@@ -559,7 +587,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 15자의 숫자로 이루어진 유니크한 값 생성
          *
-         * @return {String}
+         * @return {string}
          */
         getUniqId: function (len) {
             len = len || 32;
@@ -571,7 +599,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 순번으로 유니크값 을 생성해서 반환
          * @function
-         * @return {Number}
+         * @return {number}
          */
         nextSeq: (function() {
             var seq = 0;
@@ -583,7 +611,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 템플릿 생성
          *
-         * @param {String} text 템플릿 문자열
+         * @param {string} text 템플릿 문자열
          * @param {Object} data 템플릿 문자열에서 변환될 데이타
          * @param {Object} settings 옵션
          * @return {Function} tempalte 함수
@@ -595,7 +623,7 @@ window.FRAMEWORK_NAME = 'vinyl';
          */
         template: function (str, data) {
             var m,
-                src = 'var __src = [], each='+FRAMEWORK_NAME+'.each, escapeHTML='+FRAMEWORK_NAME+'.string.escapeHTML; with(value||{}) { __src.push("';
+                src = 'var __src = [], each='+LIB_NAME+'.each, escapeHTML='+LIB_NAME+'.string.escapeHTML; with(value||{}) { __src.push("';
             str = $.trim(str);
             src += str.replace(/\r|\n|\t/g, " ")
                 .replace(/<\$(.*?)\$>/g, function(a, b) { return '<$' + b.replace(/"/g, '\t') + '$>'; })
@@ -752,7 +780,7 @@ window.FRAMEWORK_NAME = 'vinyl';
      * man.say('freeman');  // 결과: alert("I'm Person: programer"); alert("I'm Man: freeman");
      * man.run(); // 결과: alert("i'm running...");
      */
-    var Base = (function () {
+    (function () {
         var F = function(){},
             ignoreNames = ['superclass', 'members', 'statics'];
 
@@ -792,7 +820,7 @@ window.FRAMEWORK_NAME = 'vinyl';
 
         function classExtend(attr, c) {
             var supr = c ? (attr.$extend || Object) : this,
-                statics, mixins, singleton, instance;
+                statics, Object, singleton, instance;
 
             if (core.is(attr, 'function')) {
                 attr = attr();
@@ -800,7 +828,7 @@ window.FRAMEWORK_NAME = 'vinyl';
 
             singleton = attr.$singleton || false;
             statics = attr.$statics || false;
-            mixins = attr.$mixins || false;
+            Object = attr.$mixins || false;
 
 
             function ctor() {
@@ -858,7 +886,7 @@ window.FRAMEWORK_NAME = 'vinyl';
                 return supr.prototype[name].apply(this, args);
             };
 
-            Class.mixins = function (o) {
+            Class.Object = function (o) {
                 if (!o.push) {
                     o = [o];
                 }
@@ -874,7 +902,7 @@ window.FRAMEWORK_NAME = 'vinyl';
                     });
                 });
             };
-            mixins && Class.mixins.call(Class, mixins);
+            Object && Class.Object.call(Class, Object);
 
             Class.members = function (o) {
                 inherits(this.prototype, o, supr);
@@ -897,7 +925,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         }
 
         var Base = function(){ };
-        Base.prototype.initialize = function(){};
+        Base.prototype.initialize = function(){ throw new Error("Base 클래스로 객체를 생성 할 수 없습니다"); };
         Base.prototype.release = function(){};
         Base.extend = classExtend;
 
@@ -906,18 +934,12 @@ window.FRAMEWORK_NAME = 'vinyl';
     })();
 
     core.addon('Env', /** @lends vinyl */{
-        /**
-         * 사이트의 설정 값들이 들어갈 객체
-         *
-         * @private
-         * @type {Object}
-         */
         configs: {},
 
         /**
          * 설정값을 꺼내오는 함수
          *
-         * @param {String} name 설정명. `.`를 구분값으로 단계별로 값을 가져올 수 있다.
+         * @param {string} name 설정명. `.`를 구분값으로 단계별로 값을 가져올 수 있다.
          * @param {Object} def (Optional) 설정된 값이 없을 경우 사용할 기본값
          * @return {Object} 설정값
          */
@@ -937,7 +959,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 설정값을 지정하는 함수
          *
-         * @param {String} name 설정명. `.`를 구분값으로 단계를 내려가서 설정할 수 있다.
+         * @param {string} name 설정명. `.`를 구분값으로 단계를 내려가서 설정할 수 있다.
          * @param {Object} value 설정값
          * @return {Object} 설정값
          */
@@ -1035,7 +1057,7 @@ window.FRAMEWORK_NAME = 'vinyl';
      * @namespace
      * @name vinyl.PubSub
      * @description 발행/구독 객체: 상태변화를 관찰하는 옵저버(핸들러)를 등록하여, 상태변화가 있을 때마다 옵저버를 발행(실행)
-     * 하도록 하는 객체이다.
+     * 하도록 하는 객체이다..
      * @example
      * // 옵저버 등록
      * vinyl.PubSub.on('customevent', function() {
@@ -1048,7 +1070,49 @@ window.FRAMEWORK_NAME = 'vinyl';
     core.addon('PubSub', function () {
 
         var PubSub = $(window);
+
+        var tmp = /** @lends vinyl.PubSub */{
+            /**
+             * 이벤트 바인딩
+             * @function
+             * @param {string} name 이벤트명
+             * @param {function} handler 핸들러
+             * @return {vinyl.PubSub}
+             */
+            on: function(name, handler) {
+                return this;
+            },
+
+            /**
+             * 이벤트 언바인딩
+             * @param {string} name 이벤트명
+             * @param {Function} [handler] 핸들러
+             * @return {vinyl.PubSub}
+             */
+            off: function (name, handler) {
+                return this;
+            },
+
+            /**
+             * 이벤트 트리거
+             * @param {string} name 이벤트명
+             * @param {Object} [data] 핸들러
+             * @return {vinyl.PubSub}
+             */
+            trigger: function (name, data) {
+                return this;
+            }
+        };
+
+        /**
+         * 이벤트 바인딩
+         * @alias vinyl.PubSub.on;
+         */
         PubSub.attach = PubSub.on;
+        /**
+         * 이벤트 언바인딩
+         * @alias vinyl.PubSub.off;
+         */
         PubSub.unattach = PubSub.off;
 
         return PubSub;
@@ -1075,10 +1139,10 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 주어진 수를 자릿수만큼 앞자리에 0을 채워서 반환
          *
-         * @param {String} value
-         * @param {Number} size (Optional: 2)
-         * @param {String} ch (Optional: '0')
-         * @return {String}
+         * @param {string} value
+         * @param {number} size (Optional: 2)
+         * @param {string} ch (Optional: '0')
+         * @return {string}
          *
          * @example
          * vinyl.number.zeroPad(2, 3); => "002"
@@ -1103,8 +1167,8 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 세자리마다 ,를 삽입
          *
-         * @param {Number} value
-         * @return {String}
+         * @param {number} value
+         * @return {string}
          *
          * @example
          * vinyl.number.addComma(21342); => "21,342"
@@ -1125,9 +1189,9 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * min ~ max사이의 랜덤값 반환
          *
-         * @param {Number} min 최소값
-         * @param {Number} max 최대값
-         * @return {Number} 랜덤값
+         * @param {number} min 최소값
+         * @param {number} max 최대값
+         * @return {number} 랜덤값
          */
         random: function (min, max) {
             if (max === null) {
@@ -1140,10 +1204,10 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 상하한값을 반환. value가 min보다 작을 경우 min을, max보다 클 경우 max를 반환
          *
-         * @param {Number} value
-         * @param {Number} min 최소값
-         * @param {Number} max 최대값
-         * @return {Number}
+         * @param {number} value
+         * @param {number} min 최소값
+         * @param {number} max 최대값
+         * @return {number}
          */
         limit: function (value, min, max) {
             if (value < min) { return min; }
@@ -1158,7 +1222,7 @@ window.FRAMEWORK_NAME = 'vinyl';
      */
     core.number.pad = core.number.zeroPad;
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);
 
 /*!
  * @author 김승일
@@ -1204,10 +1268,10 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 정규식이나 검색문자열을 사용하여 문자열에서 텍스트를 교체
              *
-             * @param {String} value 교체를 수행할 문자열
+             * @param {string} value 교체를 수행할 문자열
              * @param {RegExp|String} find 검색할 문자열이나 정규식 패턴
-             * @param {String} rep 대체할 문자열
-             * @return {String} 대체된 결과 문자열
+             * @param {string} rep 대체할 문자열
+             * @return {string} 대체된 결과 문자열
              *
              * @example
              * vinyl.replaceAll("a1b2c3d", /[0-9]/g, ''); => "abcd"
@@ -1222,8 +1286,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 주어진 문자열의 바이트길이 반환
              *
-             * @param {String} value 길이를 계산할 문자열
-             * @return {Number}
+             * @param {string} value 길이를 계산할 문자열
+             * @return {number}
              *
              * @example
              * vinyl.byteLength("동해물과"); => 8
@@ -1238,8 +1302,8 @@ window.FRAMEWORK_NAME = 'vinyl';
 
             /**
              * 주어진 path에서 확장자를 추출
-             * @param {String} fname path문자열
-             * @return {String} 확장자
+             * @param {string} fname path문자열
+             * @return {string} 확장자
              */
             getFileExt: function(fname){
                 fname || (fname = '');
@@ -1249,10 +1313,10 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 주어진 문자열을 지정된 길이(바이트)만큼 자른 후, 꼬리글을 덧붙여 반환
              *
-             * @param {String} value 문자열
-             * @param {Number} length 잘라낼 길이
-             * @param {String} truncation (Optional: '...') 꼬리글
-             * @return {String} 결과 문자열
+             * @param {string} value 문자열
+             * @param {number} length 잘라낼 길이
+             * @param {string} truncation (Optional: '...') 꼬리글
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.cutByByte("동해물과", 3, "..."); => "동..."
@@ -1271,9 +1335,9 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 주어진 바이트길이에 해당하는 char index 반환
              *
-             * @param {String} value 문자열
-             * @param {Number} length 제한 문자수
-             * @return {Number} chars count
+             * @param {string} value 문자열
+             * @param {number} length 제한 문자수
+             * @return {number} chars count
              */
             charsByByte: function (value, length) {
                 var str = value,
@@ -1288,8 +1352,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 첫글자를 대문자로 변환하고 이후의 문자들은 소문자로 변환
              *
-             * @param {String} value 문자열
-             * @return {String} 결과 문자열
+             * @param {string} value 문자열
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.capitalize("abCdEfg"); => "Abcdefg"
@@ -1301,8 +1365,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 카멜 형식으로 변환
              *
-             * @param {String} value 문자열
-             * @return {String} 결과 문자열
+             * @param {string} value 문자열
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.capitalize("ab-cd-efg"); => "abCdEfg"
@@ -1316,8 +1380,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 대쉬 형식으로 변환
              *
-             * @param {String} value 문자열
-             * @return {String} 결과 문자열
+             * @param {string} value 문자열
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.dasherize("abCdEfg"); => "ab-cd-efg"
@@ -1328,7 +1392,7 @@ window.FRAMEWORK_NAME = 'vinyl';
 
             /**
              * 첫글자를 소문자로 변환하고 이후의 모든 문자를 소문자로 변환
-             * @param {String} value
+             * @param {string} value
              * @returns {string}
              */
             toFirstLower: function (value) {
@@ -1338,9 +1402,9 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 주어진 문자열을 지정한 수만큼 반복하여 조합
              *
-             * @param {String} value 문자열
-             * @param {Number} cnt 반복 횟수
-             * @return {String} 결과 문자열
+             * @param {string} value 문자열
+             * @param {number} cnt 반복 횟수
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.repeat("ab", 4); => "abababab"
@@ -1358,8 +1422,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 특수기호를 HTML ENTITY로 변환
              *
-             * @param {String} value 특수기호
-             * @return {String} 결과 문자열
+             * @param {string} value 특수기호
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.escapeHTML('<div><a href="#">링크</a></div>'); => "&lt;div&gt;&lt;a href=&quot;#&quot;&gt;링크&lt;/a&gt;&lt;/div&gt;"
@@ -1373,8 +1437,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * HTML ENTITY로 변환된 문자열을 원래 기호로 변환
              *
-             * @param {String} value 문자열
-             * @return {String} 결과 문자열
+             * @param {string} value 문자열
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.unescapeHTML('&lt;div&gt;&lt;a href=&quot;#&quot;&gt;링크&lt;/a&gt;&lt;/div&gt;');  => '<div><a href="#">링크</a></div>'
@@ -1388,10 +1452,10 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * value === these이면 other를,  value !== these 이면 value를 반환
              *
-             * @param {String} value 현재 상태값
-             * @param {String} these 첫번째 상태값
-             * @param {String} other 두번째 상태값
-             * @return {String}
+             * @param {string} value 현재 상태값
+             * @param {string} these 첫번째 상태값
+             * @param {string} other 두번째 상태값
+             * @return {string}
              *
              * @example
              * // 정렬버튼에 이용
@@ -1405,9 +1469,9 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 주어진 문자열에 있는 {인덱스} 부분을 주어진 인수에 해당하는 값으로 치환 후 반환
              *
-             * @param {String} format 문자열
-             * @param {String} ... 대체할 문자열
-             * @return {String} 결과 문자열
+             * @param {string} format 문자열
+             * @param {string} ... 대체할 문자열
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.string.format("{0}:{1}:{2} {0}", "a", "b", "c");  => "a:b:c a"
@@ -1425,8 +1489,8 @@ window.FRAMEWORK_NAME = 'vinyl';
              * 형식문자열을 주어진 인자값으로 치환하여 반환
              * @function
              * @name vinyl.string.sprintf
-             * @param {String} str 형식문자열(%d, %f, %s)
-             * @param {Mixins} ... 형식문자열에 지정된 형식에 대치되는 값
+             * @param {string} str 형식문자열(%d, %f, %s)
+             * @param {Object} ... 형식문자열에 지정된 형식에 대치되는 값
              * @example
              * var ret = vinyl.string.sprintf('%2d %s', 2, 'abc'); // => '02 abc'
              */
@@ -1506,8 +1570,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 주어진 문자열에서 HTML를 제거
              *
-             * @param {String} value 문자열
-             * @return {String}
+             * @param {string} value 문자열
+             * @return {string}
              */
             stripTags: function (value) {
                 return value.replace(tagRegexp, '');
@@ -1516,8 +1580,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 주어진 문자열에서 스크립트를 제거
              *
-             * @param {String} value 문자열
-             * @return {String}
+             * @param {string} value 문자열
+             * @return {string}
              */
             stripScripts: function (value) {
                 return value.replace(scriptRegexp, '');
@@ -1526,7 +1590,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         };
     });
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);
 
 /*!
  * @author common.date.js
@@ -1562,8 +1626,8 @@ window.FRAMEWORK_NAME = 'vinyl';
              * 날짜형식을 지정한 포맷의 문자열로 변환
              *
              * @param {Date} formatDate
-             * @param {String} formatString} 포맷 문자열
-             * @return {String} 결과 문자열
+             * @param {string} formatString} 포맷 문자열
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.date.format(new Date(), "yy:MM:dd");
@@ -1600,7 +1664,7 @@ window.FRAMEWORK_NAME = 'vinyl';
 
             /**
              *
-             * @param {String} date
+             * @param {string} date
              * @returns {boolean}
              */
             isValid: function(date) {
@@ -1617,7 +1681,7 @@ window.FRAMEWORK_NAME = 'vinyl';
              * @param {Date} date 날짜
              * @param {Date} start 시작일시
              * @param {Date} end 만료일시
-             * @return {Boolean}
+             * @return {boolean}
              */
             between: function (date, start, end) {
                 return date.getTime() >= start.getTime() && date.getTime() <= end.getTime();
@@ -1630,7 +1694,7 @@ window.FRAMEWORK_NAME = 'vinyl';
              * @name vinyl.date.compare
              * @param {Date} date1 날짜1
              * @param {Date} date2 날짜2
-             * @return {Number} -1: date1가 이후, 0: 동일, 1:date2가 이후
+             * @return {number} -1: date1가 이후, 0: 동일, 1:date2가 이후
              */
             compare: compare,
 
@@ -1639,7 +1703,7 @@ window.FRAMEWORK_NAME = 'vinyl';
              *
              * @param {Date} date1 날짜1
              * @param {Date} date2 날짜2
-             * @return {Boolean}
+             * @return {boolean}
              */
             equalsYMH: function(a, b) {
                 var ret = true;
@@ -1656,7 +1720,7 @@ window.FRAMEWORK_NAME = 'vinyl';
              *
              * @param {Date} value 날짜
              * @param {Date} date
-             * @return {Boolean}
+             * @return {boolean}
              */
             isAfter: function (value, date) {
                 return compare(value, date || new Date()) === 1;
@@ -1667,7 +1731,7 @@ window.FRAMEWORK_NAME = 'vinyl';
              *
              * @param {Date} value 날짜
              * @param {Date} date
-             * @return {Boolean}
+             * @return {boolean}
              */
             isBefore: function (value, date) {
                 return compare(value, date || new Date()) === -1;
@@ -1676,8 +1740,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 주어진 날짜를 기준으로 type만큼 가감된 날짜를 format형태로 반환(내가 이걸 왜 beforeDate로 명명 했을까나..;;;)
              * @param {Date} date 기준날짜
-             * @param {String} type -2d, -3d, 4M, 2y ..
-             * @param {String} format
+             * @param {string} type -2d, -3d, 4M, 2y ..
+             * @param {string} format
              * @returns {Date|String}
              */
             beforeDate: function(date, type, format) {
@@ -1711,7 +1775,7 @@ window.FRAMEWORK_NAME = 'vinyl';
              *
              * @function
              * @name vinyl.date.parse
-             * @param {String} dateStringInRange 날짜 형식의 문자열
+             * @param {string} dateStringInRange 날짜 형식의 문자열
              * @return {Date}
              */
             parse: (function() {
@@ -1751,7 +1815,7 @@ window.FRAMEWORK_NAME = 'vinyl';
              * 두 날짜의 월 간격
              * @param {Date} d1 날짜 1
              * @param {Date} d2 날짜 2
-             * @return {Number}
+             * @return {number}
              */
             monthDiff: function(d1, d2) {
                 d1 = this.parse(d1);
@@ -1767,8 +1831,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 주어진 년월의 일수를 반환
              *
-             * @param {Number} year 년도
-             * @param {Number} month 월
+             * @param {number} year 년도
+             * @param {number} month 월
              * @return {Date}
              */
             daysInMonth: function(year, month) {
@@ -1783,7 +1847,7 @@ window.FRAMEWORK_NAME = 'vinyl';
              * @name vinyl.date.prettyDuration
              * @param {Date|Interval} time 시간
              * @param {Date|Interval} time (Optional) 기준시간
-             * @return {JSON}
+             * @return {Object}
              *
              * @example
              * vinyl.date.prettyDuration(new Date() - 51811); -> "52초 이전"
@@ -1826,7 +1890,7 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 밀리초를 시,분,초로 변환
              * @param time
-             * @returns {JSON}
+             * @returns {Object}
              */
             msToTime: function(amount) {
                 var days = 0,
@@ -1854,7 +1918,7 @@ window.FRAMEWORK_NAME = 'vinyl';
              * @function
              * @param {Date|Interval} time 시간
              * @param {Date|Interval} time 시간
-             * @return {JSON}
+             * @return {Object}
              *
              * @example
              * vinyl.date.timeDiff(new Date, new Date(new Date() - 51811));
@@ -1899,7 +1963,7 @@ window.FRAMEWORK_NAME = 'vinyl';
              * 주어진 날짜가 몇번째 주인가
              * @function
              * @param {Date} date 날짜
-             * @returns {Number}
+             * @returns {number}
              */
             weekOfYear : (function() {
                 var ms1d = 1000 * 60 * 60 * 24,
@@ -1916,7 +1980,7 @@ window.FRAMEWORK_NAME = 'vinyl';
 
             /**
              * 윤년인가
-             * @param {Number} y 년도
+             * @param {number} y 년도
              * @returns {boolean}
              */
             isLeapYear: function ( y ) {
@@ -1927,8 +1991,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 날짜 가감함수
              * @param {Date} date 날짜
-             * @param {String} interval 가감타입(ms, s, m, h, d, M, y)
-             * @param {Number} value 가감 크기
+             * @param {string} interval 가감타입(ms, s, m, h, d, M, y)
+             * @param {number} value 가감 크기
              * @returns {Date}
              * @example
              * // 2014-06-10에서 y(년도)를 -4 한 값을 계산
@@ -2015,7 +2079,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         };
     });
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);
 /*!
  * @author common.object.js
  * @email comahead@vi-nyl.com
@@ -2070,9 +2134,9 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 콜백함수로 바탕으로 각 요소를 가공하는 함수
          *
-         * @param {JSON} obj 배열
+         * @param {Object} obj 배열
          * @param {Function} cb 콜백함수
-         * @return {JSON}
+         * @return {Object}
          *
          * @example
          * vinyl.object.map({1; 'one', 2: 'two', 3: 'three'}, function(item, key) {
@@ -2094,7 +2158,7 @@ window.FRAMEWORK_NAME = 'vinyl';
          *
          *
          * @param {Object} obj json객체
-         * @return {Boolean} 요소가 하나라도 있는지 여부
+         * @return {boolean} 요소가 하나라도 있는지 여부
          */
         hasItems: function (obj) {
             if (!core.is(obj, 'object')) {
@@ -2113,8 +2177,8 @@ window.FRAMEWORK_NAME = 'vinyl';
          * 객체를 쿼리스크링으로 변환
          *
          * @param {Object} obj 문자열
-         * @param {Boolean} isEncode (Optional) URL 인코딩할지 여부
-         * @return {String} 결과 문자열
+         * @param {boolean} isEncode (Optional) URL 인코딩할지 여부
+         * @return {string} 결과 문자열
          *
          * @example
          * vinyl.object.toQueryString({"a":1, "b": 2, "c": {"d": 4}}); => "a=1&b=2&c[d]=4"
@@ -2180,12 +2244,12 @@ window.FRAMEWORK_NAME = 'vinyl';
 
         /**
          * json를 문자열로 변환
-         * @param {JSON} val json 객체
-         * @param {Boolean} opts.singleQuotes (Optional) 문자열을 '로 감쌀것인가
-         * @param {String} opts.indent (Optional)  들여쓰기 문자(\t or 스페이스)
-         * @param {String} opts.nr (Optional) 줄바꿈 문자(\n or 스페이스)
-         * @param {Boolean} (Optional) pad 기호와 문자간의 간격
-         * @return {String}
+         * @param {Object} val json 객체
+         * @param {boolean} opts.singleQuotes (Optional) 문자열을 '로 감쌀것인가
+         * @param {string} opts.indent (Optional)  들여쓰기 문자(\t or 스페이스)
+         * @param {string} opts.nr (Optional) 줄바꿈 문자(\n or 스페이스)
+         * @param {boolean} (Optional) pad 기호와 문자간의 간격
+         * @return {string}
          */
         stringify: function (val, opts, pad) {
             var cache = [];
@@ -2257,7 +2321,7 @@ window.FRAMEWORK_NAME = 'vinyl';
     core.json = core.object;
 
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);
 /*!
  * @author 김승일
  * @email comahead@vi-nyl.com
@@ -2286,7 +2350,7 @@ window.FRAMEWORK_NAME = 'vinyl';
          * 배열 병합
          * @param {Array} arr
          * @param {Array} ...
-         * @returns {*}
+         * @returns {Array} 모두 합쳐진 배열
          * @exmaple
          * var newArray = vinyl.array.append([1,2,3], [4,5,6], [6, 7, 8]); // [1,2,3,4,5,6,7,8]
          */
@@ -2302,7 +2366,7 @@ window.FRAMEWORK_NAME = 'vinyl';
          * @param {Array} obj 배열
          * @param {Function} cb 콜백함수
          * @param {Object} (optional) 컨텍스트
-         * @return {Array}
+         * @return {Array} 기공된 배열
          *
          * @example
          * vinyl.array.map([1, 2, 3], function(item, index) {
@@ -2324,7 +2388,15 @@ window.FRAMEWORK_NAME = 'vinyl';
          * 반복자함수의 반환값이 true가 아닐 때까지 반복
          *
          * @name vinyl.array.every
-         * @return {Boolean} 최종 결과
+         * @param {Array} arr 배열
+         * @param {arrayCallback} cb 함수
+         * @return {boolean} 최종 결과
+         * @example
+         * var sum = 0;
+         * vinyl.array.every([1, 3, 5, 7], function(val) {
+         *     return val > 5;
+         * });
+         * => 9
          */
         every: nativeCall(arrayProto.every) || function(arr, cb, ctx) {
             var isTrue = true;
@@ -2341,6 +2413,15 @@ window.FRAMEWORK_NAME = 'vinyl';
          * 반복자함수의 반환값이 true일 때까지 반복
          *
          * @name vinyl.array.any
+         * @param {Array} arr 배열
+         * @param {arrayCallback} cb 함수
+         * @return {boolean} 최종 결과
+         * @example
+         * var sum = 0;
+         * vinyl.array.any([1, 3, 5, 7], function(val) {
+         *     return val < 5;
+         * });
+         * => 4
          */
         any: nativeCall(arrayProto.any) || function(arr, cb, ctx) {
             var isTrue = false;
@@ -2401,7 +2482,7 @@ window.FRAMEWORK_NAME = 'vinyl';
          *
          * @param {Array} obj 배열
          * @param {Function} cb 콜백함수
-         * @return {Array}
+         * @return {boolean}
          *
          * @example
          * vinyl.array.include([1, '일', 2, '이', 3, '삼'], '삼');  => true
@@ -2425,7 +2506,7 @@ window.FRAMEWORK_NAME = 'vinyl';
          * @name vinyl.array.indexOf
          * @param {Array} obj 배열
          * @param {Function} cb 콜백함수
-         * @return {Array}
+         * @return {number}
          *
          * @example
          * vinyl.array.indexOf([1, '일', 2, '이', 3, '삼'], '일');  => 1
@@ -2441,7 +2522,7 @@ window.FRAMEWORK_NAME = 'vinyl';
          * 주어진 배열에서 index에 해당하는 요소를 삭제
          *
          * @param {Array} value 배열
-         * @param {Number} index 삭제할 인덱스 or 요소
+         * @param {number} index 삭제할 인덱스 or 요소
          * @return {Array} 지정한 요소가 삭제된 배열
          */
         removeAt: function (value, index, cb) {
@@ -2456,7 +2537,7 @@ window.FRAMEWORK_NAME = 'vinyl';
          * 주어진 배열에서 해당하는 요소를 삭제
          *
          * @param {Array} value 배열
-         * @param {Mixed} item 요소
+         * @param {*} item 요소
          * @return {Array} 지정한 요소가 삭제된 배열
          */
         remove: function (value, iter, cb) {
@@ -2479,7 +2560,9 @@ window.FRAMEWORK_NAME = 'vinyl';
          * 주어진 배열에서 가장 큰 요소를 반환
          *
          * @param {Array} array 배열
-         * @return {Mix}
+         * @return {number} 최대값
+         * @example
+         * vinyl.array.max([2, 1, 3, 5, 2, 8]); => 8
          */
         max: function( array ) {
             return Math.max.apply( Math, array );
@@ -2489,7 +2572,9 @@ window.FRAMEWORK_NAME = 'vinyl';
          * 주어진 배열에서 가장 작은 요소를 반환
          *
          * @param {Array} array 배열
-         * @return {Mix}
+         * @return {number} 최소값
+         * @example
+         * vinyl.array.max([2, 1, 3, 5, 2, 8]); => 1
          */
         min: function( array ) {
             return Math.min.apply( Math, array );
@@ -2500,12 +2585,10 @@ window.FRAMEWORK_NAME = 'vinyl';
          *
          * @name reverse
          * @param {Array} array 배열
-         * @return {Array}
+         * @return {Array} 역순으로 정렬된 새로운 배열
          */
         reverse: nativeCall(arrayProto.reverse) || function(array) {
-            var first = null;
-            var last = null;
-            var tmp = null;
+            var tmp = null, first, last;
             var length = array.length;
 
             for (first = 0, last = length - 1; first < length / 2; first++, last--) {
@@ -2518,7 +2601,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         }
     });
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);
 /*!
  * @author 김승일
  * @email comahead@vi-nyl.com
@@ -2538,9 +2621,9 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 주어진 url에 쿼리스츠링을 조합
          *
-         * @param {String} url
+         * @param {string} url
          * @param {String:Object} string
-         * @return {String}
+         * @return {string}
          *
          * @example
          * vinyl.uri.addParam("board.do", {"a":1, "b": 2, "c": {"d": 4}}); => "board.do?a=1&b=2&c[d]=4"
@@ -2560,7 +2643,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 쿼리스트링을 객체로 변환
          *
-         * @param {String} query
+         * @param {string} query
          * @return {Object}
          *
          * @example
@@ -2588,7 +2671,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * url를 파싱하여 host, port, protocol 등을 추출
          *
-         * @param {String} str url 문자열
+         * @param {string} str url 문자열
          * @return {Object}
          *
          * @example
@@ -2623,8 +2706,8 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 주어진 url에서 해쉬문자열 제거
          *
-         * @param {String} url url 문자열
-         * @return {String} 결과 문자열
+         * @param {string} url url 문자열
+         * @return {string} 결과 문자열
          *
          * @example
          * vinyl.uri.removeHash("list.do#comment"); => "list.do"
@@ -2634,7 +2717,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         }
     });
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);
 /*!
  * @author common.util.js
  * @email comahead@vi-nyl.com
@@ -2763,18 +2846,10 @@ window.FRAMEWORK_NAME = 'vinyl';
             },
 
             /**
-             * 팝업의 사이즈를 $el 사이즈에 맞게 조절
-             */
-            resizePopup: function($el) {
-                if (!($el instanceof jQuery)) { $el = $($el); }
-                window.resizeTo($el.width(), $el.height());
-            },
-
-            /**
              * 팝업의 사이즈에 따른 화면상의 중앙 위치좌표를 반환
              * @param {number} w 너비.
              * @param {number} h 높이.
-             * @return {JSON} {left: 값, top: 값}
+             * @return {Object} {left: 값, top: 값}
              */
             popupCoords: function (w, h) {
                 var wLeft = window.screenLeft ? window.screenLeft : window.screenX,
@@ -2786,43 +2861,6 @@ window.FRAMEWORK_NAME = 'vinyl';
                     left: wLeft + (wWidth / 2) - (w / 2),
                     top: wTop + (wHeight / 2) - (h / 2) - 25
                 };
-            },
-
-            /**
-             * data-src에 있는 이미지주소를 실제로 불러들인 다음, 주어진 사이즈내에서 가운데에 배치시켜주는 함수
-             * @param {jQuery} $imgs
-             * @param {Number} wrapWidth 최대 너비 값
-             * @param {Number} wrapHeight 최대 높이 값
-             * @param {Function} [onError] (optional) 이미지를 불어오지 못했을 경우 실행할 콜백함수
-             * @return {Boolean} true 불러들인 이미지가 있었는지 여부
-             */
-            centeringImage: function ($imgs, wrapWidth, wrapHeight, onError) {
-                var hasLazyImage = false;
-                var dataSrcAttr = 'data-src';
-
-                $imgs.filter('img[data-src]').each(function(i) {
-                    var $img = $(this);
-                    wrapWidth = wrapWidth || $img.parent().width();
-                    wrapHeight = wrapHeight || $img.parent().height();
-
-                    // 이미지가 로드되면, 실제 사이즈를 체크해서 가로이미지인지 세로이미지인지에 따라 기준이 되는 width, height에 지정한다.
-                    $img.one('load', function() {
-                        $img.removeAttr('width height').css({'width':'auto', 'height':'auto'});
-                        if ($img.attr('data-no-height') === 'true' && this.width > wrapWidth) {
-                            $img.css('width', wrapWidth);
-                        } else if ($img.attr('data-no-width') === 'true' && this.height > wrapHeight) {
-                            $img.css('height', wrapWidth);
-                        } else {
-                            var isHoriz = this.width > this.height;
-                            if ( isHoriz ) { // 가로로 긴 이미지
-                                $img.css('width', Math.min(this.width, wrapWidth));
-                            } else { // 세로로 긴 이미지
-                                $img.css('height', Math.min(this.height, wrapHeight));
-                            }
-                        }
-                    }).attr('src', $img.attr('data-src')).removeAttr('data-src');
-                });
-                return hasLazyImage;
             },
 
             /**
@@ -2918,7 +2956,7 @@ window.FRAMEWORK_NAME = 'vinyl';
 
             /**
              * 도큐먼트의 높이를 반환
-             * @return {Number}
+             * @return {number}
              */
             getDocHeight: function() {
                 var doc = document,
@@ -2934,7 +2972,7 @@ window.FRAMEWORK_NAME = 'vinyl';
 
             /**
              * 도큐먼트의 너비를 반환
-             * @return {Number}
+             * @return {number}
              */
             getDocWidth: function() {
                 var doc = document,
@@ -2949,7 +2987,7 @@ window.FRAMEWORK_NAME = 'vinyl';
 
             /**
              * 창의 너비를 반환
-             * @return {Number}
+             * @return {number}
              */
             getWinWidth : function() {
                 var w = 0;
@@ -2965,7 +3003,7 @@ window.FRAMEWORK_NAME = 'vinyl';
 
             /**
              * 창의 높이를 반환
-             * @return {Number}
+             * @return {number}
              */
             getWinHeight : function() {
                 var w = 0;
@@ -3017,7 +3055,7 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 주어진 요소의 사이즈 & 위치를 반환
              * @param elem
-             * @returns {JSON} {width: 너비, height: 높이, offset: { top: 탑위치, left: 레프트위치}}
+             * @returns {Object} {width: 너비, height: 높이, offset: { top: 탑위치, left: 레프트위치}}
              */
             getDimensions: function( elem ) {
                 var el = elem[0];
@@ -3101,7 +3139,7 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 팝업 뛰우기
              */
-            openPopup2: function(url, feature, callback) {
+            openPopupAndExec: function(url, feature, callback) {
                 feature = $.extend(feature,  {
                     name: 'popupWin',
                     width: 600,
@@ -3144,58 +3182,9 @@ window.FRAMEWORK_NAME = 'vinyl';
                     fn();
                 }
             }
-            /**
-             *
-             * @param {String} scriptUrl URL
-             * @param {Function} [callback] 콜백
-             * @return {Deferred} deferred
-             */
-            /*
-             loadScript: (function() {
-             var doc = document,
-             loaded = {};
-
-             return function(url, callback) {
-             var defer = $.Deferred();
-             if(loaded[url]){
-             callback&&callback();
-             defer.resolve(url)
-             return defer.promise();
-             }
-
-             var script = document.createElement('script');
-
-             script.type = 'text/javascript';
-             script.async = true;
-
-             script.onerror = function() {
-             defer.reject(url);
-             //throw new Error(url + ' not loaded');
-             };
-
-             script.onreadystatechange = script.onload = function (e) {
-             e = context.event || e;
-
-             if (e.type == 'load' || this.readyState.test(/loaded|complete/)) {
-             this.onreadystatechange = null;
-             callback&&callback();
-             defer.resolve(url);
-             }
-             };
-
-             script.src = url;
-             doc.getElementsByTagName('head')[0].appendChild(script);
-             return defer.promise();
-             };
-             })()*/
         };
     });
-    /**
-     * vinyl.util.openPopup 함수의 별칭
-     * @name vinyl.openPopup
-     */
-    core.openPopup = core.util.openPopup;
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);
 /*!
  * @author common.css3.js
  * @email comahead@vi-nyl.com
@@ -3282,14 +3271,14 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 현재 브라우저의 css prefix명 (webkit or Moz or ms or O)
              * @function
-             * @return {String}
+             * @return {string}
              */
             vendor: _vendor,
             /**
              * 주어진 css속성을 지원하는지 체크
              *
-             * @param {String} cssName 체크하고자 하는 css명
-             * @return {Boolean} 지원여부
+             * @param {string} cssName 체크하고자 하는 css명
+             * @return {boolean} 지원여부
              * @example
              * if(vinyl.css3.has('transform')) { ...
              */
@@ -3309,8 +3298,8 @@ window.FRAMEWORK_NAME = 'vinyl';
              * 주어진 css명 앞에 현재 브라우저에 해당하는 벤더prefix를 붙여준다.
              *
              * @function
-             * @param {String} cssName css명
-             * @return {String}
+             * @param {string} cssName css명
+             * @return {string}
              * @example
              * vinyl.css3.prefix('transition'); // => webkitTransition
              */
@@ -3330,7 +3319,7 @@ window.FRAMEWORK_NAME = 'vinyl';
             }
         };
     });
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);
 /*!
  * @author common.cookie.js
  * @email comahead@vi-nyl.com
@@ -3349,12 +3338,12 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 쿠키를 설정
          *
-         * @param {String} name 쿠키명
-         * @param {String} value 쿠키값
+         * @param {string} name 쿠키명
+         * @param {string} value 쿠키값
          * @param {Date} (Optional) options.expires 만료시간
-         * @param {String} (Optional) options.path 쿠키의 유효경로
-         * @param {String} (Optional) options.domain 쿠키의 유효 도메인
-         * @param {Boolean} (Optional) options.secure https에서만 쿠키 설정이 가능하도록 하는 속성
+         * @param {string} (Optional) options.path 쿠키의 유효경로
+         * @param {string} (Optional) options.domain 쿠키의 유효 도메인
+         * @param {boolean} (Optional) options.secure https에서만 쿠키 설정이 가능하도록 하는 속성
          */
         set: function (name, value, options) {
             options || (options = {});
@@ -3370,8 +3359,8 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 쿠키를 설정
          *
-         * @param {String} name 쿠키명
-         * @return  {String} 쿠키값
+         * @param {string} name 쿠키명
+         * @return  {string} 쿠키값
          */
         get: function (name) {
             var j, g, h, f;
@@ -3390,7 +3379,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 쿠키 삭제
          *
-         * @param {String} name 쿠키명
+         * @param {string} name 쿠키명
          */
         remove: function (name) {
             document.cookie = name + "=;expires=Fri, 31 Dec 1987 23:59:59 GMT;";
@@ -3398,9 +3387,9 @@ window.FRAMEWORK_NAME = 'vinyl';
 
         /**
          * sep를 구분자로 하여 문자열로 조합하여 쿠키에 셋팅
-         * @param {String} name 쿠키명
-         * @param {String} val 값
-         * @param {String} sep 구분자
+         * @param {string} name 쿠키명
+         * @param {string} val 값
+         * @param {string} sep 구분자
          * @example
          * vinyl.cookie.addToArray('arr', 'a');
          * vinyl.cookie.addToArray('arr', 'b');  // arr:a|b
@@ -3421,9 +3410,9 @@ window.FRAMEWORK_NAME = 'vinyl';
 
         /**
          * name에 셋팅되어 있던 조합문자열에서 val를 제거
-         * @param {String} name 쿠키명
-         * @param {String} val 값
-         * @param {String} sep
+         * @param {string} name 쿠키명
+         * @param {string} val 값
+         * @param {string} sep
          * @example
          * vinyl.cookie.addToArray('arr', 'a');
          * vinyl.cookie.addToArray('arr', 'b');  // arr:a|b
@@ -3441,7 +3430,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         }
     });
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);
 /*!
  * @author common.valid.js
  * @email comahead@vi-nyl.com
@@ -3475,8 +3464,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 필수입력 체크
              *
-             * @param {String} str
-             * @return {Boolean} 빈값이면 false 반환
+             * @param {string} str
+             * @return {boolean} 빈값이면 false 반환
              */
             require: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -3485,8 +3474,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 유효한 이메일형식인지 체크
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             email: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -3495,8 +3484,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 한글인지 체크
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             kor: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -3505,8 +3494,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 영문 체크
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             eng: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -3515,8 +3504,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 숫자 체크(실제 숫자타입인가)
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             rawNum: function (str) {
                 isElement(str) && (str = str.value); // 엘리먼인 경우 .value에서 꺼내온다.
@@ -3526,9 +3515,9 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 숫자 체크
              *
-             * @param {String} str
-             * @param {Boolean} allowSign (optional)  없으면 -, +기호를 허용안함, true이면 -, + 허용함
-             * @return {Boolean}
+             * @param {string} str
+             * @param {boolean} allowSign (optional)  없으면 -, +기호를 허용안함, true이면 -, + 허용함
+             * @return {boolean}
              */
             num: function (str, allowSign) {
                 isElement(str) && (str = str.value); // 엘리먼인 경우 .value에서 꺼내온다.
@@ -3540,8 +3529,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 유효한 url형식인지 체크
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             url: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -3550,8 +3539,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 특수기호 유무 체크
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             special: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -3560,8 +3549,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 유효한 전화번호형식인지 체크
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             phone: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -3581,8 +3570,8 @@ window.FRAMEWORK_NAME = 'vinyl';
              * 날짜가 유효한지 체크(20130212, 2013-12-12, 2013-12-12 23:12:12 모두 체크 가능)
              *
              *
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             date: function(str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -3601,8 +3590,8 @@ window.FRAMEWORK_NAME = 'vinyl';
              * 유효한 yyyy-MM-dd형식인지 체크(삭제 예정)
              *
              * @deprecated
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             dateYMD: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -3612,8 +3601,8 @@ window.FRAMEWORK_NAME = 'vinyl';
              * 유효한 yyyy-MM-dd hh:mm:ss형식인지 체크(삭제 예정)
              *
              * @deprecated
-             * @param {String} str
-             * @return {Boolean}
+             * @param {string} str
+             * @return {boolean}
              */
             dateYMDHMS: function (str) {
                 isString(str) || (isElement(str) && (str = str.value));
@@ -3622,9 +3611,9 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 유효한 주민번호인지 체크
              *
-             * @param {String} strSsn1 앞주민번호.
-             * @param {String} strSsn2 (Optional) 뒷주민번호. 값이 없으면 strSsn1만으로 체크
-             * @return {Boolean}
+             * @param {string} strSsn1 앞주민번호.
+             * @param {string} strSsn2 (Optional) 뒷주민번호. 값이 없으면 strSsn1만으로 체크
+             * @return {boolean}
              */
             SSN: function (sid1, sid2) {
                 var num = sid1 + (sid2 ? sid2 : ""),
@@ -3648,9 +3637,9 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 유효한 외국인주민번호인지 체크
              *
-             * @param {String} strSsn1 앞주민번호.
-             * @param {String} strSsn2 (Optional) 뒷주민번호. 값이 없으면 strSsn1만으로 체크
-             * @return {Boolean}
+             * @param {string} strSsn1 앞주민번호.
+             * @param {string} strSsn2 (Optional) 뒷주민번호. 값이 없으면 strSsn1만으로 체크
+             * @return {boolean}
              */
             FgnSSN: function (sid1, sid2) {
                 var num = sid1 + (sid2 ? sid2 : ""),
@@ -3693,7 +3682,7 @@ window.FRAMEWORK_NAME = 'vinyl';
         };
     });
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);
 /*!
  * @author common.globalevents.js
  * @email comahead@vi-nyl.com
@@ -3711,7 +3700,7 @@ window.FRAMEWORK_NAME = 'vinyl';
      * 주어진 엘리먼트 하위에 탭, 아코디온, 달력, Placeholder 관연요소가 있을 때 해당 UI모듈을 빌드해준다.
      * @function
      * @name $#buildUIControls
-     * @param {String} types (Optional) "tab,selectbox,calendar,placeholder"
+     * @param {string} types (Optional) "tab,selectbox,calendar,placeholder"
      * @example
      * $.ajax(...).done(function(html) {
 	 *    $('#box').html(html).buildUIControls();
@@ -4018,7 +4007,7 @@ window.FRAMEWORK_NAME = 'vinyl';
     };
 
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);
 /*!
  * @author common.ui.js
  * @email comahead@vi-nyl.com
@@ -4032,13 +4021,13 @@ window.FRAMEWORK_NAME = 'vinyl';
     var View;		// vinyl.ui.View
 
     /**
-     * ui 관련 네임스페이스
+     * ui 관련 네임스페이스 및 UI 클래스 생성 함수
      * @name vinyl.ui
-     * @param name
-     * @param attr
-     * @returns {*}
+     * @param {string} name
+     * @param {Object} attr
+     * @returns {*} vinyl.ui.View에서 상속받아 생성된 새로운 클래스
      */
-    core.ui = function(/*String*/name, supr, /*Object*/attr) {
+    core.ui = function(name, supr, attr) {
         var bindName, Klass;
 
         if(!attr) {
@@ -4079,8 +4068,8 @@ window.FRAMEWORK_NAME = 'vinyl';
         /**
          * 작성된 UI모듈을 jQuery의 플러그인으로 사용할 수 있도록 바인딩시켜 주는 함수
          *
-         * @param {Class} Klass 클래스
-         * @param {String} name 플러그인명
+         * @param {vinyl.ui.View} Klass 클래스
+         * @param {string} name 플러그인명
          *
          * @example
          * // 클래스 정의
@@ -4091,9 +4080,19 @@ window.FRAMEWORK_NAME = 'vinyl';
 		 *   },
 		 *   ...
 		 * });
-         * vinyl.ui.bindjQuery(Slider, 'hibSlider');
+         * vinyl.ui.bindjQuery(Slider, 'slider');
          * // 실제 사용시
-         * $('#slider').hibSlider({count: 10});
+         * $('#slider').slider({count: 10});
+         *
+         * // 객체 가져오기 : instance 키워드 사용
+         * var slider = $('#slider').slider('instance');
+         * slider.move(2); // $('#slider').slider('move', 2); 와 동일
+         *
+         * // 객체 해제하기 : release 키워드 사용
+         * $('#slider').slider('release');
+         *
+         * // 옵션 변경하기
+         * $('#slider').option('effect', 'fade'); // 이때 optionchange 라는 이벤트가 발생된다.
          */
         bindjQuery: function (Klass, name) {
             var old = $.fn[name];
@@ -4116,7 +4115,7 @@ window.FRAMEWORK_NAME = 'vinyl';
                     }
 
                     if ( !instance || (a.length === 1 && typeof options !== 'string')) {
-                        instance && (instance.release(), instance = null);
+                        instance && (instance.release(), $this.removeData('ui_'+name));
                         $this.data('ui_'+name, (instance = new Klass(this, extend({}, $this.data(), options), me)));
                     }
 
@@ -4280,7 +4279,7 @@ window.FRAMEWORK_NAME = 'vinyl';
                     var name = RegExp.$1,
                         selector = RegExp.$2,
                         args = [name],
-                        func = isFn(value) ? value : (isFn(me[value]) ? me[value] : core.emptyFn);
+                        func = core.is(value, 'function') ? value : (core.is(me[value], 'function') ? me[value] : core.emptyFn);
 
                     if (selector) { args[args.length] = $.trim(selector); }
 
@@ -4328,7 +4327,7 @@ window.FRAMEWORK_NAME = 'vinyl';
 
             /**
              * this.$el하위에 있는 엘리먼트를 조회
-             * @param {String} selector 셀렉터
+             * @param {string} selector 셀렉터
              * @returns {jQuery}
              */
             $: function (selector) {
@@ -4360,8 +4359,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 옵션 설정함수
              *
-             * @param {String} name 옵션명
-             * @param {Mixed} value 옵션값
+             * @param {string} name 옵션명
+             * @param {*} value 옵션값
              */
             setOption: function(name, value) {
                 this.options[name] = value;
@@ -4370,9 +4369,9 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 옵션값 반환함수
              *
-             * @param {String} name 옵션명
-             * @param {Mixed} def 옵션값이 없을 경우 기본값
-             * @return {Mixed} 옵션값
+             * @param {string} name 옵션명
+             * @param {*} def 옵션값이 없을 경우 기본값
+             * @return {*} 옵션값
              */
             getOption: function(name, def) {
                 return (name in this.options && this.options[name]) || def;
@@ -4381,9 +4380,9 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 인자수에 따라 옵션값을 설정하거나 반환해주는 함수
              *
-             * @param {String} name 옵션명
-             * @param {Mixed} value (Optional) 옵션값: 없을 경우 name에 해당하는 값을 반환
-             * @return {Mixed}
+             * @param {string} name 옵션명
+             * @param {*} value (Optional) 옵션값: 없을 경우 name에 해당하는 값을 반환
+             * @return {*}
              * @example
              * $('...').tabs('option', 'startIndex', 2);
              */
@@ -4399,8 +4398,8 @@ window.FRAMEWORK_NAME = 'vinyl';
             /**
              * 이벤트명에 현재 클래스 고유의 네임스페이스를 붙여서 반환 (ex: 'click mousedown' -> 'click.MyClassName mousedown.MyClassName')
              * @private
-             * @param {String} eventNames 네임스페이스가 없는 이벤트명
-             * @return {String} 네임스페이스가 붙어진 이벤트명
+             * @param {string} eventNames 네임스페이스가 없는 이벤트명
+             * @return {string} 네임스페이스가 붙어진 이벤트명
              */
             _normalizeEventNamespace: function(eventNames) {
                 if (eventNames instanceof $.Event) {
@@ -4426,7 +4425,7 @@ window.FRAMEWORK_NAME = 'vinyl';
 
             /**
              * 현재 클래스의 이벤트네임스페이스를 반환
-             * @return {String} 이벤트 네임스페이스
+             * @return {string} 이벤트 네임스페이스
              */
             getEventNamespace: function() {
                 return this._eventNamespace;
@@ -4516,4 +4515,4 @@ window.FRAMEWORK_NAME = 'vinyl';
         return View;
     });
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

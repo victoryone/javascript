@@ -23,7 +23,7 @@
         $singleton: true, // 싱글톤
 		/**
 		 * 생성자
-		 * @param {JSON} options
+		 * @param {Object} options
 		 */
         initialize: function(options) {
             var me = this;
@@ -39,7 +39,7 @@
 		/**
 		 * 에러코드에 해당하는 한글메세지 반환
 		 * @param {Object} err err.code, err.message
-		 * @return {String} 한글 에러메세지
+		 * @return {string} 한글 에러메세지
 		 */
         _getTransKorMessage: function(err) {
             /*

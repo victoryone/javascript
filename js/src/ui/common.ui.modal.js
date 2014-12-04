@@ -98,13 +98,13 @@
          * @constructors
          * @param {String|Element|jQuery} el
          * @param {Object} options
-         * @param {Boolean}  options.overlay:true 오버레이를 깔것인가
-         * @param {Boolean}  options.clone: true    복제해서 띄울 것인가
-         * @param {Boolean}  options.closeByEscape: true    // esc키를 눌렀을 때 닫히게 할 것인가
-         * @param {Boolean}  options.removeOnClose: false   // 닫을 때 dom를 삭제할것인가
-         * @param {Boolean}  options.draggable: true                // 드래그를 적용할 것인가
-         * @param {Boolean}  options.dragHandle: 'h1.title'     // 드래그대상 요소
-         * @param {Boolean}  options.show: true                 // 호출할 때 바로 표시할 것인가...
+         * @param {boolean}  options.overlay:true 오버레이를 깔것인가
+         * @param {boolean}  options.clone: true    복제해서 띄울 것인가
+         * @param {boolean}  options.closeByEscape: true    // esc키를 눌렀을 때 닫히게 할 것인가
+         * @param {boolean}  options.removeOnClose: false   // 닫을 때 dom를 삭제할것인가
+         * @param {boolean}  options.draggable: true                // 드래그를 적용할 것인가
+         * @param {boolean}  options.dragHandle: 'h1.title'     // 드래그대상 요소
+         * @param {boolean}  options.show: true                 // 호출할 때 바로 표시할 것인가...
          */
         initialize: function(el, options) {
             var me = this;
@@ -567,8 +567,8 @@
          * @memberOf vinyl.ui
          * @name alert
          * @function
-         * @param {String} msg 얼럿 메세지
-         * @param {JSON} options 모달 옵션
+         * @param {string} msg 얼럿 메세지
+         * @param {Object} options 모달 옵션
          * @example
          * vinyl.ui.alert('안녕하세요');
          */
@@ -600,4 +600,4 @@
         '</div>'].join('');
     ///////////////////////////////////////////////////////////////////////////////////////
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

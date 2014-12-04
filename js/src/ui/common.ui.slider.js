@@ -9,29 +9,29 @@
    
     core.define( 'ui.MoveDirection', 
     	{
-    		/** @property {String} SLIDE_HORIZONTAL 가로 슬라이드 효과 옵션  */
+    		/** @property {string} SLIDE_HORIZONTAL 가로 슬라이드 효과 옵션  */
 			HORIZONTAL : "horizontal",
-			/** @property {String} SLIDE_VERTICAL 세로 슬라이드 효과 옵션  */
+			/** @property {string} SLIDE_VERTICAL 세로 슬라이드 효과 옵션  */
 			VERTICAL : "vertical" 	
     	 }
     );
     
     core.define( 'ui.IndicatorType', 
     	{
-    		/** @property {String} SLIDE_HORIZONTAL 가로 슬라이드 효과 옵션  */
+    		/** @property {string} SLIDE_HORIZONTAL 가로 슬라이드 효과 옵션  */
 			NORMAL : "normal",
-			/** @property {String} SLIDE_VERTICAL 세로 슬라이드 효과 옵션  */
+			/** @property {string} SLIDE_VERTICAL 세로 슬라이드 효과 옵션  */
 			BG_ANIMATE : "bg_animate" 	
     	 }
     );
     
     core.define( 'ui.EffectType', 
     	{
-    		/** @property {String} SLIDE_HORIZONTAL 가로 슬라이드 효과 옵션  */
+    		/** @property {string} SLIDE_HORIZONTAL 가로 슬라이드 효과 옵션  */
 			SLIDE_HORIZONTAL : "slide_horizontal",
-			/** @property {String} SLIDE_VERTICAL 세로 슬라이드 효과 옵션  */
+			/** @property {string} SLIDE_VERTICAL 세로 슬라이드 효과 옵션  */
 			SLIDE_VERTICAL : "slide_vertical",
-			/** @property {String} ALPHA 페이드인 효과 옵션  */
+			/** @property {string} ALPHA 페이드인 효과 옵션  */
 			ALPHA : "alpha",
 			ALPHA_PNG : "alpha_png",
 			EXPAND_SLIDE_HORIZONTAL: "expand_slide_horizontal" 	
@@ -91,7 +91,7 @@
         
 		/**
 		 * 선택된 컨텐츠 설정
-		 * @param {int} index select index
+		 * @param {number} index select index
 		 */
 		setContent : function(index, isAni) {
 			isAni = (isAni == undefined) ? true : isAni;
@@ -990,7 +990,7 @@
 		
 		/**
 		 * 선택된 컨텐츠 설정
-		 * @param {int} index select index
+		 * @param {number} index select index
 		 */
 		setContent: function( index, isAni ){
 			if( this.isAnimate || this.currentIndex == index ){ return; };
@@ -1002,7 +1002,7 @@
 		
 		/**
 		 * 인디케이터 상태 변경
-		 * @param {int} index select index
+		 * @param {number} index select index
 		 */
 		_setIndicator: function( index ){
 			if( this.indicator ){

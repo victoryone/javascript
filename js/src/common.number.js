@@ -17,10 +17,10 @@
         /**
          * 주어진 수를 자릿수만큼 앞자리에 0을 채워서 반환
          *
-         * @param {String} value
-         * @param {Number} size (Optional: 2)
-         * @param {String} ch (Optional: '0')
-         * @return {String}
+         * @param {string} value
+         * @param {number} size (Optional: 2)
+         * @param {string} ch (Optional: '0')
+         * @return {string}
          *
          * @example
          * vinyl.number.zeroPad(2, 3); => "002"
@@ -45,8 +45,8 @@
         /**
          * 세자리마다 ,를 삽입
          *
-         * @param {Number} value
-         * @return {String}
+         * @param {number} value
+         * @return {string}
          *
          * @example
          * vinyl.number.addComma(21342); => "21,342"
@@ -67,9 +67,9 @@
         /**
          * min ~ max사이의 랜덤값 반환
          *
-         * @param {Number} min 최소값
-         * @param {Number} max 최대값
-         * @return {Number} 랜덤값
+         * @param {number} min 최소값
+         * @param {number} max 최대값
+         * @return {number} 랜덤값
          */
         random: function (min, max) {
             if (max === null) {
@@ -82,10 +82,10 @@
         /**
          * 상하한값을 반환. value가 min보다 작을 경우 min을, max보다 클 경우 max를 반환
          *
-         * @param {Number} value
-         * @param {Number} min 최소값
-         * @param {Number} max 최대값
-         * @return {Number}
+         * @param {number} value
+         * @param {number} min 최소값
+         * @param {number} max 최대값
+         * @return {number}
          */
         limit: function (value, min, max) {
             if (value < min) { return min; }
@@ -100,4 +100,4 @@
      */
     core.number.pad = core.number.zeroPad;
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

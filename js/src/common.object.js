@@ -52,9 +52,9 @@
         /**
          * 콜백함수로 바탕으로 각 요소를 가공하는 함수
          *
-         * @param {JSON} obj 배열
+         * @param {Object} obj 배열
          * @param {Function} cb 콜백함수
-         * @return {JSON}
+         * @return {Object}
          *
          * @example
          * vinyl.object.map({1; 'one', 2: 'two', 3: 'three'}, function(item, key) {
@@ -76,7 +76,7 @@
          *
          *
          * @param {Object} obj json객체
-         * @return {Boolean} 요소가 하나라도 있는지 여부
+         * @return {boolean} 요소가 하나라도 있는지 여부
          */
         hasItems: function (obj) {
             if (!core.is(obj, 'object')) {
@@ -95,8 +95,8 @@
          * 객체를 쿼리스크링으로 변환
          *
          * @param {Object} obj 문자열
-         * @param {Boolean} isEncode (Optional) URL 인코딩할지 여부
-         * @return {String} 결과 문자열
+         * @param {boolean} isEncode (Optional) URL 인코딩할지 여부
+         * @return {string} 결과 문자열
          *
          * @example
          * vinyl.object.toQueryString({"a":1, "b": 2, "c": {"d": 4}}); => "a=1&b=2&c[d]=4"
@@ -162,12 +162,12 @@
 
         /**
          * json를 문자열로 변환
-         * @param {JSON} val json 객체
-         * @param {Boolean} opts.singleQuotes (Optional) 문자열을 '로 감쌀것인가
-         * @param {String} opts.indent (Optional)  들여쓰기 문자(\t or 스페이스)
-         * @param {String} opts.nr (Optional) 줄바꿈 문자(\n or 스페이스)
-         * @param {Boolean} (Optional) pad 기호와 문자간의 간격
-         * @return {String}
+         * @param {Object} val json 객체
+         * @param {boolean} opts.singleQuotes (Optional) 문자열을 '로 감쌀것인가
+         * @param {string} opts.indent (Optional)  들여쓰기 문자(\t or 스페이스)
+         * @param {string} opts.nr (Optional) 줄바꿈 문자(\n or 스페이스)
+         * @param {boolean} (Optional) pad 기호와 문자간의 간격
+         * @return {string}
          */
         stringify: function (val, opts, pad) {
             var cache = [];
@@ -239,4 +239,4 @@
     core.json = core.object;
 
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

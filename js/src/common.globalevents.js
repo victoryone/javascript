@@ -15,7 +15,7 @@
      * 주어진 엘리먼트 하위에 탭, 아코디온, 달력, Placeholder 관연요소가 있을 때 해당 UI모듈을 빌드해준다.
      * @function
      * @name $#buildUIControls
-     * @param {String} types (Optional) "tab,selectbox,calendar,placeholder"
+     * @param {string} types (Optional) "tab,selectbox,calendar,placeholder"
      * @example
      * $.ajax(...).done(function(html) {
 	 *    $('#box').html(html).buildUIControls();
@@ -322,4 +322,4 @@
     };
 
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

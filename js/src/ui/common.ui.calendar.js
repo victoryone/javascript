@@ -413,9 +413,9 @@
 
         /**
          * 휴일 여부
-         * @param {Number} y 년도
-         * @param {Number} m 월
-         * @param {Number} d 일
+         * @param {number} y 년도
+         * @param {number} m 월
+         * @param {number} d 일
          * @returns {boolean} 휴일여부
          * @private
          */
@@ -784,7 +784,7 @@
         /**
          * 윤년 여부
          * @param {Date} date 렌더링할 날짜 데이타 생성
-         * @return {Boolean} 윤년 여부
+         * @return {boolean} 윤년 여부
          */
         _isLeapYear: function (year) {
             return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0))
@@ -792,4 +792,4 @@
     });
     ///////////////////////////////////////////////////////////////////////////////////////
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

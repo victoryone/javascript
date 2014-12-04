@@ -121,7 +121,7 @@
 
         /**
          * index에 해당하는 탭을 활성화
-         * @param {Number} index 탭버튼 인덱스
+         * @param {number} index 탭버튼 인덱스
          */
         selectTab: function(index) {
             var me = this, e;
@@ -144,4 +144,4 @@
     });
     ///////////////////////////////////////////////////////////////////////////////////////
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

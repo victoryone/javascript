@@ -16,12 +16,12 @@
         /**
          * 쿠키를 설정
          *
-         * @param {String} name 쿠키명
-         * @param {String} value 쿠키값
+         * @param {string} name 쿠키명
+         * @param {string} value 쿠키값
          * @param {Date} (Optional) options.expires 만료시간
-         * @param {String} (Optional) options.path 쿠키의 유효경로
-         * @param {String} (Optional) options.domain 쿠키의 유효 도메인
-         * @param {Boolean} (Optional) options.secure https에서만 쿠키 설정이 가능하도록 하는 속성
+         * @param {string} (Optional) options.path 쿠키의 유효경로
+         * @param {string} (Optional) options.domain 쿠키의 유효 도메인
+         * @param {boolean} (Optional) options.secure https에서만 쿠키 설정이 가능하도록 하는 속성
          */
         set: function (name, value, options) {
             options || (options = {});
@@ -37,8 +37,8 @@
         /**
          * 쿠키를 설정
          *
-         * @param {String} name 쿠키명
-         * @return  {String} 쿠키값
+         * @param {string} name 쿠키명
+         * @return  {string} 쿠키값
          */
         get: function (name) {
             var j, g, h, f;
@@ -57,7 +57,7 @@
         /**
          * 쿠키 삭제
          *
-         * @param {String} name 쿠키명
+         * @param {string} name 쿠키명
          */
         remove: function (name) {
             document.cookie = name + "=;expires=Fri, 31 Dec 1987 23:59:59 GMT;";
@@ -65,9 +65,9 @@
 
         /**
          * sep를 구분자로 하여 문자열로 조합하여 쿠키에 셋팅
-         * @param {String} name 쿠키명
-         * @param {String} val 값
-         * @param {String} sep 구분자
+         * @param {string} name 쿠키명
+         * @param {string} val 값
+         * @param {string} sep 구분자
          * @example
          * vinyl.cookie.addToArray('arr', 'a');
          * vinyl.cookie.addToArray('arr', 'b');  // arr:a|b
@@ -88,9 +88,9 @@
 
         /**
          * name에 셋팅되어 있던 조합문자열에서 val를 제거
-         * @param {String} name 쿠키명
-         * @param {String} val 값
-         * @param {String} sep
+         * @param {string} name 쿠키명
+         * @param {string} val 값
+         * @param {string} sep
          * @example
          * vinyl.cookie.addToArray('arr', 'a');
          * vinyl.cookie.addToArray('arr', 'b');  // arr:a|b
@@ -108,4 +108,4 @@
         }
     });
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

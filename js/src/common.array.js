@@ -26,7 +26,7 @@
          * 배열 병합
          * @param {Array} arr
          * @param {Array} ...
-         * @returns {*}
+         * @returns {Array} 모두 합쳐진 배열
          * @exmaple
          * var newArray = vinyl.array.append([1,2,3], [4,5,6], [6, 7, 8]); // [1,2,3,4,5,6,7,8]
          */
@@ -42,7 +42,7 @@
          * @param {Array} obj 배열
          * @param {Function} cb 콜백함수
          * @param {Object} (optional) 컨텍스트
-         * @return {Array}
+         * @return {Array} 기공된 배열
          *
          * @example
          * vinyl.array.map([1, 2, 3], function(item, index) {
@@ -64,7 +64,15 @@
          * 반복자함수의 반환값이 true가 아닐 때까지 반복
          *
          * @name vinyl.array.every
-         * @return {Boolean} 최종 결과
+         * @param {Array} arr 배열
+         * @param {arrayCallback} cb 함수
+         * @return {boolean} 최종 결과
+         * @example
+         * var sum = 0;
+         * vinyl.array.every([1, 3, 5, 7], function(val) {
+         *     return val > 5;
+         * });
+         * => 9
          */
         every: nativeCall(arrayProto.every) || function(arr, cb, ctx) {
             var isTrue = true;
@@ -81,6 +89,15 @@
          * 반복자함수의 반환값이 true일 때까지 반복
          *
          * @name vinyl.array.any
+         * @param {Array} arr 배열
+         * @param {arrayCallback} cb 함수
+         * @return {boolean} 최종 결과
+         * @example
+         * var sum = 0;
+         * vinyl.array.any([1, 3, 5, 7], function(val) {
+         *     return val < 5;
+         * });
+         * => 4
          */
         any: nativeCall(arrayProto.any) || function(arr, cb, ctx) {
             var isTrue = false;
@@ -141,7 +158,7 @@
          *
          * @param {Array} obj 배열
          * @param {Function} cb 콜백함수
-         * @return {Array}
+         * @return {boolean}
          *
          * @example
          * vinyl.array.include([1, '일', 2, '이', 3, '삼'], '삼');  => true
@@ -165,7 +182,7 @@
          * @name vinyl.array.indexOf
          * @param {Array} obj 배열
          * @param {Function} cb 콜백함수
-         * @return {Array}
+         * @return {number}
          *
          * @example
          * vinyl.array.indexOf([1, '일', 2, '이', 3, '삼'], '일');  => 1
@@ -181,7 +198,7 @@
          * 주어진 배열에서 index에 해당하는 요소를 삭제
          *
          * @param {Array} value 배열
-         * @param {Number} index 삭제할 인덱스 or 요소
+         * @param {number} index 삭제할 인덱스 or 요소
          * @return {Array} 지정한 요소가 삭제된 배열
          */
         removeAt: function (value, index, cb) {
@@ -196,7 +213,7 @@
          * 주어진 배열에서 해당하는 요소를 삭제
          *
          * @param {Array} value 배열
-         * @param {Mixed} item 요소
+         * @param {*} item 요소
          * @return {Array} 지정한 요소가 삭제된 배열
          */
         remove: function (value, iter, cb) {
@@ -219,7 +236,9 @@
          * 주어진 배열에서 가장 큰 요소를 반환
          *
          * @param {Array} array 배열
-         * @return {Mix}
+         * @return {number} 최대값
+         * @example
+         * vinyl.array.max([2, 1, 3, 5, 2, 8]); => 8
          */
         max: function( array ) {
             return Math.max.apply( Math, array );
@@ -229,7 +248,9 @@
          * 주어진 배열에서 가장 작은 요소를 반환
          *
          * @param {Array} array 배열
-         * @return {Mix}
+         * @return {number} 최소값
+         * @example
+         * vinyl.array.max([2, 1, 3, 5, 2, 8]); => 1
          */
         min: function( array ) {
             return Math.min.apply( Math, array );
@@ -240,12 +261,10 @@
          *
          * @name reverse
          * @param {Array} array 배열
-         * @return {Array}
+         * @return {Array} 역순으로 정렬된 새로운 배열
          */
         reverse: nativeCall(arrayProto.reverse) || function(array) {
-            var first = null;
-            var last = null;
-            var tmp = null;
+            var tmp = null, first, last;
             var length = array.length;
 
             for (first = 0, last = length - 1; first < length / 2; first++, last--) {
@@ -258,4 +277,4 @@
         }
     });
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

@@ -17,9 +17,9 @@
         /**
          * 주어진 url에 쿼리스츠링을 조합
          *
-         * @param {String} url
+         * @param {string} url
          * @param {String:Object} string
-         * @return {String}
+         * @return {string}
          *
          * @example
          * vinyl.uri.addParam("board.do", {"a":1, "b": 2, "c": {"d": 4}}); => "board.do?a=1&b=2&c[d]=4"
@@ -39,7 +39,7 @@
         /**
          * 쿼리스트링을 객체로 변환
          *
-         * @param {String} query
+         * @param {string} query
          * @return {Object}
          *
          * @example
@@ -67,7 +67,7 @@
         /**
          * url를 파싱하여 host, port, protocol 등을 추출
          *
-         * @param {String} str url 문자열
+         * @param {string} str url 문자열
          * @return {Object}
          *
          * @example
@@ -102,8 +102,8 @@
         /**
          * 주어진 url에서 해쉬문자열 제거
          *
-         * @param {String} url url 문자열
-         * @return {String} 결과 문자열
+         * @param {string} url url 문자열
+         * @return {string} 결과 문자열
          *
          * @example
          * vinyl.uri.removeHash("list.do#comment"); => "list.do"
@@ -113,4 +113,4 @@
         }
     });
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

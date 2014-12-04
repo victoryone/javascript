@@ -49,8 +49,8 @@
         },
         /**
          * 새로운 요소 추가
-         * @param {JSON} data 새로운 요소(id속성은 반드시 존재해야 한다).
-         * @returns {Boolean}
+         * @param {Object} data 새로운 요소(id속성은 반드시 존재해야 한다).
+         * @returns {boolean}
          */
         add: function(data) {
             var me = this;
@@ -100,7 +100,7 @@
 
         /**
          * 현재 요소 반환
-         * @param {String} id (Optional) 이 인자가 넘어오면 이 값으로 현재 선택된 값으로 설정
+         * @param {string} id (Optional) 이 인자가 넘어오면 이 값으로 현재 선택된 값으로 설정
          * @returns {*}
          */
         current: function(id) {
@@ -112,8 +112,8 @@
         /**
          * id에 해당하는 항목의 인덱스를 현재 선택된 인덱스로 설정
          * @private
-         * @param {String} id
-         * @returns {Number}
+         * @param {string} id
+         * @returns {number}
          */
         _setCurrentIndexById: function(id) {
             var idx = 0;
@@ -127,8 +127,8 @@
 
         /**
          * id에 해당하는 인덱스를 반환
-         * @param {String} id
-         * @returns {Number}
+         * @param {string} id
+         * @returns {number}
          */
         indexOf: function(id) {
             for (var i = 0; i < this.list.length; i++) {
@@ -155,7 +155,7 @@
         },
         /**
          * 주어진 id를 갖는 요소가 존재하는지 체크
-         * @param {String} id
+         * @param {string} id
          * @returns {*}
          */
         has: function(id) {
@@ -169,7 +169,7 @@
 
         /**
          * 현재 선택된 항목이 첫번째 요소인가
-         * @returns {Boolean}
+         * @returns {boolean}
          */
         isFirst: function() {
             return this.currentIndex === 0;
@@ -177,7 +177,7 @@
 
         /**
          * 현재 선택된 항목이 마지막 요소인가
-         * @returns {Boolean}
+         * @returns {boolean}
          */
         isLast: function() {
             return this.currentIndex === this.list.length - 1;
@@ -185,7 +185,7 @@
 
         /**
          * idx번째 요소를 반환
-         * @param {Number} idx
+         * @param {number} idx
          * @returns {*}
          */
         at: function(idx) {
@@ -197,7 +197,7 @@
 
         /**
          * id에 해당하는 요소를 반환
-         * @param {String} id
+         * @param {string} id
          * @returns {*}
          */
         get: function(id) {
@@ -241,7 +241,7 @@
         },
         /**
          * 배열의 요소에서 name이 value를 갖는 요소를 반환
-         * @param {String} name 키명
+         * @param {string} name 키명
          * @param {Mix} value 값
          * @returns {*}
          * @private
@@ -280,7 +280,7 @@
 
         /**
          * idx로 현재 선택된 인덱스로 설정
-         * @param {Number} idx 인덱스
+         * @param {number} idx 인덱스
          */
         setCurrentIndex: function(idx) {
             this.currentIndex = Math.max(0, Math.min(idx, this.list.length - 1));
@@ -288,7 +288,7 @@
 
         /**
          * 내부배열의 크기를 반환
-         * @returns {Number}
+         * @returns {number}
          */
         size: function() {
             return this.list.length;
@@ -304,7 +304,7 @@
 
         /**
          *
-         * @param {Number} index1
+         * @param {number} index1
          * @param {number} index2
          */
         insert: function(index, item) {
@@ -313,8 +313,8 @@
         },
         /**
          *
-         * @param {Number} from
-         * @param {Number} to
+         * @param {number} from
+         * @param {number} to
          */
         move: function(from, to) {
             this.list.splice(to, 0, this.list.splice(from, 1)[0]);
@@ -345,7 +345,7 @@
         /**
          * 생성자
          * @param {Element|jQuery|String} el
-         * @param {JSON} options
+         * @param {Object} options
          */
         initialize: function(el, options) {
             if (this.callParent(el, options) === false) {
@@ -494,7 +494,7 @@
 
         /**
          * 바 이동
-         * @param {Number} dir -1: 감소, 1: 증가
+         * @param {number} dir -1: 감소, 1: 증가
          * @private
          */
         _moveBar: function(dir) {
@@ -512,7 +512,7 @@
 
         /**
          * 최대값 설정
-         * @param {Number} newValue
+         * @param {number} newValue
          */
         setMaxValue: function(newValue) {
             var me = this;
@@ -524,7 +524,7 @@
 
         /**
          * title속성에 현재 값을 설정
-         * @param {String} value
+         * @param {string} value
          */
         setTitle: function(value) {
             var me = this;
@@ -546,7 +546,7 @@
 
         /**
          * 값 설정
-         * @param {Number} value
+         * @param {number} value
          */
         setValue: function(value) {
             var me = this,
@@ -582,7 +582,7 @@
         /**
          * 생성자
          * @param {Element|jQuery|String} el
-         * @param {JSON} options
+         * @param {Object} options
          */
         initialize: function(el, options) {
             var me = this;
@@ -691,7 +691,7 @@
 
         /**
          * id에 해당하는 행 삭제
-         * @param {String} id
+         * @param {string} id
          * @private
          */
         removeRow: function(id) {
@@ -702,7 +702,7 @@
 
         /**
          * current id에 해당하는 행을 활성화
-         * @param {Boolean} sel
+         * @param {boolean} sel
          * @private
          */
         select: function(sel) {
@@ -754,7 +754,7 @@
         /**
          * 생성자
          * @param {Element|jQuery|String} el
-         * @param {JSON} options
+         * @param {Object} options
          */
         initialize: function(el, options) {
             var me = this;
@@ -1175,7 +1175,7 @@
 
         /**
          * 미디어 시간을 00:00 형식으로 변환
-         * @param {Number} time
+         * @param {number} time
          */
         _generateTime: function(time) {
             var me = this;
@@ -1217,7 +1217,7 @@
 
         /**
          * 컨트롤들을 활성/비활성화
-         * @param {Boolean} isEnabled
+         * @param {boolean} isEnabled
          */
         enables: function(isEnabled) {
             var me = this;
@@ -1288,7 +1288,7 @@
 
         /**
          * src 설정
-         * @param {String} url
+         * @param {string} url
          */
         setSrc: function(url) {
             var me = this;
@@ -1319,7 +1319,7 @@
         },
         /**
          * 재생
-         * @param {Number} time
+         * @param {number} time
          */
         play: function(time) {
             console.log('play', time);
@@ -1346,7 +1346,7 @@
         },
         /**
          * 볼륨 설정
-         * @param {Number} vol
+         * @param {number} vol
          */
         setVolume: function(vol) {
             try {
@@ -1355,21 +1355,21 @@
         },
         /**
          * 음소거
-         * @param {Boolean} muted
+         * @param {boolean} muted
          */
         setMuted: function(muted) {
             this.media.setMuted(muted);
         },
         /**
          * 재생 위치 설정
-         * @param {Number} time
+         * @param {number} time
          */
         setCurrentTime: function(time) {
             this.media.setCurrentTime(time);
         },
         /**
          * 곡추가
-         * @param {JSON} data
+         * @param {Object} data
          */
         _add: function(data) {
             if (!$.trim(data[this.options.idAttribute]) || !$.trim(data[this.options.srcAttribute])) {

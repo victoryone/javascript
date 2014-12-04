@@ -11,13 +11,13 @@
     var View;		// vinyl.ui.View
 
     /**
-     * ui 관련 네임스페이스
+     * ui 관련 네임스페이스 및 UI 클래스 생성 함수
      * @name vinyl.ui
-     * @param name
-     * @param attr
-     * @returns {*}
+     * @param {string} name
+     * @param {Object} attr
+     * @returns {*} vinyl.ui.View에서 상속받아 생성된 새로운 클래스
      */
-    core.ui = function(/*String*/name, supr, /*Object*/attr) {
+    core.ui = function(name, supr, attr) {
         var bindName, Klass;
 
         if(!attr) {
@@ -58,8 +58,8 @@
         /**
          * 작성된 UI모듈을 jQuery의 플러그인으로 사용할 수 있도록 바인딩시켜 주는 함수
          *
-         * @param {Class} Klass 클래스
-         * @param {String} name 플러그인명
+         * @param {vinyl.ui.View} Klass 클래스
+         * @param {string} name 플러그인명
          *
          * @example
          * // 클래스 정의
@@ -70,9 +70,19 @@
 		 *   },
 		 *   ...
 		 * });
-         * vinyl.ui.bindjQuery(Slider, 'hibSlider');
+         * vinyl.ui.bindjQuery(Slider, 'slider');
          * // 실제 사용시
-         * $('#slider').hibSlider({count: 10});
+         * $('#slider').slider({count: 10});
+         *
+         * // 객체 가져오기 : instance 키워드 사용
+         * var slider = $('#slider').slider('instance');
+         * slider.move(2); // $('#slider').slider('move', 2); 와 동일
+         *
+         * // 객체 해제하기 : release 키워드 사용
+         * $('#slider').slider('release');
+         *
+         * // 옵션 변경하기
+         * $('#slider').option('effect', 'fade'); // 이때 optionchange 라는 이벤트가 발생된다.
          */
         bindjQuery: function (Klass, name) {
             var old = $.fn[name];
@@ -95,7 +105,7 @@
                     }
 
                     if ( !instance || (a.length === 1 && typeof options !== 'string')) {
-                        instance && (instance.release(), instance = null);
+                        instance && (instance.release(), $this.removeData('ui_'+name));
                         $this.data('ui_'+name, (instance = new Klass(this, extend({}, $this.data(), options), me)));
                     }
 
@@ -259,7 +269,7 @@
                     var name = RegExp.$1,
                         selector = RegExp.$2,
                         args = [name],
-                        func = isFn(value) ? value : (isFn(me[value]) ? me[value] : core.emptyFn);
+                        func = core.is(value, 'function') ? value : (core.is(me[value], 'function') ? me[value] : core.emptyFn);
 
                     if (selector) { args[args.length] = $.trim(selector); }
 
@@ -307,7 +317,7 @@
 
             /**
              * this.$el하위에 있는 엘리먼트를 조회
-             * @param {String} selector 셀렉터
+             * @param {string} selector 셀렉터
              * @returns {jQuery}
              */
             $: function (selector) {
@@ -339,8 +349,8 @@
             /**
              * 옵션 설정함수
              *
-             * @param {String} name 옵션명
-             * @param {Mixed} value 옵션값
+             * @param {string} name 옵션명
+             * @param {*} value 옵션값
              */
             setOption: function(name, value) {
                 this.options[name] = value;
@@ -349,9 +359,9 @@
             /**
              * 옵션값 반환함수
              *
-             * @param {String} name 옵션명
-             * @param {Mixed} def 옵션값이 없을 경우 기본값
-             * @return {Mixed} 옵션값
+             * @param {string} name 옵션명
+             * @param {*} def 옵션값이 없을 경우 기본값
+             * @return {*} 옵션값
              */
             getOption: function(name, def) {
                 return (name in this.options && this.options[name]) || def;
@@ -360,9 +370,9 @@
             /**
              * 인자수에 따라 옵션값을 설정하거나 반환해주는 함수
              *
-             * @param {String} name 옵션명
-             * @param {Mixed} value (Optional) 옵션값: 없을 경우 name에 해당하는 값을 반환
-             * @return {Mixed}
+             * @param {string} name 옵션명
+             * @param {*} value (Optional) 옵션값: 없을 경우 name에 해당하는 값을 반환
+             * @return {*}
              * @example
              * $('...').tabs('option', 'startIndex', 2);
              */
@@ -378,8 +388,8 @@
             /**
              * 이벤트명에 현재 클래스 고유의 네임스페이스를 붙여서 반환 (ex: 'click mousedown' -> 'click.MyClassName mousedown.MyClassName')
              * @private
-             * @param {String} eventNames 네임스페이스가 없는 이벤트명
-             * @return {String} 네임스페이스가 붙어진 이벤트명
+             * @param {string} eventNames 네임스페이스가 없는 이벤트명
+             * @return {string} 네임스페이스가 붙어진 이벤트명
              */
             _normalizeEventNamespace: function(eventNames) {
                 if (eventNames instanceof $.Event) {
@@ -405,7 +415,7 @@
 
             /**
              * 현재 클래스의 이벤트네임스페이스를 반환
-             * @return {String} 이벤트 네임스페이스
+             * @return {string} 이벤트 네임스페이스
              */
             getEventNamespace: function() {
                 return this._eventNamespace;
@@ -495,4 +505,4 @@
         return View;
     });
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

@@ -32,8 +32,8 @@
              * 날짜형식을 지정한 포맷의 문자열로 변환
              *
              * @param {Date} formatDate
-             * @param {String} formatString} 포맷 문자열
-             * @return {String} 결과 문자열
+             * @param {string} formatString} 포맷 문자열
+             * @return {string} 결과 문자열
              *
              * @example
              * vinyl.date.format(new Date(), "yy:MM:dd");
@@ -70,7 +70,7 @@
 
             /**
              *
-             * @param {String} date
+             * @param {string} date
              * @returns {boolean}
              */
             isValid: function(date) {
@@ -87,7 +87,7 @@
              * @param {Date} date 날짜
              * @param {Date} start 시작일시
              * @param {Date} end 만료일시
-             * @return {Boolean}
+             * @return {boolean}
              */
             between: function (date, start, end) {
                 return date.getTime() >= start.getTime() && date.getTime() <= end.getTime();
@@ -100,7 +100,7 @@
              * @name vinyl.date.compare
              * @param {Date} date1 날짜1
              * @param {Date} date2 날짜2
-             * @return {Number} -1: date1가 이후, 0: 동일, 1:date2가 이후
+             * @return {number} -1: date1가 이후, 0: 동일, 1:date2가 이후
              */
             compare: compare,
 
@@ -109,7 +109,7 @@
              *
              * @param {Date} date1 날짜1
              * @param {Date} date2 날짜2
-             * @return {Boolean}
+             * @return {boolean}
              */
             equalsYMH: function(a, b) {
                 var ret = true;
@@ -126,7 +126,7 @@
              *
              * @param {Date} value 날짜
              * @param {Date} date
-             * @return {Boolean}
+             * @return {boolean}
              */
             isAfter: function (value, date) {
                 return compare(value, date || new Date()) === 1;
@@ -137,7 +137,7 @@
              *
              * @param {Date} value 날짜
              * @param {Date} date
-             * @return {Boolean}
+             * @return {boolean}
              */
             isBefore: function (value, date) {
                 return compare(value, date || new Date()) === -1;
@@ -146,8 +146,8 @@
             /**
              * 주어진 날짜를 기준으로 type만큼 가감된 날짜를 format형태로 반환(내가 이걸 왜 beforeDate로 명명 했을까나..;;;)
              * @param {Date} date 기준날짜
-             * @param {String} type -2d, -3d, 4M, 2y ..
-             * @param {String} format
+             * @param {string} type -2d, -3d, 4M, 2y ..
+             * @param {string} format
              * @returns {Date|String}
              */
             beforeDate: function(date, type, format) {
@@ -181,7 +181,7 @@
              *
              * @function
              * @name vinyl.date.parse
-             * @param {String} dateStringInRange 날짜 형식의 문자열
+             * @param {string} dateStringInRange 날짜 형식의 문자열
              * @return {Date}
              */
             parse: (function() {
@@ -221,7 +221,7 @@
              * 두 날짜의 월 간격
              * @param {Date} d1 날짜 1
              * @param {Date} d2 날짜 2
-             * @return {Number}
+             * @return {number}
              */
             monthDiff: function(d1, d2) {
                 d1 = this.parse(d1);
@@ -237,8 +237,8 @@
             /**
              * 주어진 년월의 일수를 반환
              *
-             * @param {Number} year 년도
-             * @param {Number} month 월
+             * @param {number} year 년도
+             * @param {number} month 월
              * @return {Date}
              */
             daysInMonth: function(year, month) {
@@ -253,7 +253,7 @@
              * @name vinyl.date.prettyDuration
              * @param {Date|Interval} time 시간
              * @param {Date|Interval} time (Optional) 기준시간
-             * @return {JSON}
+             * @return {Object}
              *
              * @example
              * vinyl.date.prettyDuration(new Date() - 51811); -> "52초 이전"
@@ -296,7 +296,7 @@
             /**
              * 밀리초를 시,분,초로 변환
              * @param time
-             * @returns {JSON}
+             * @returns {Object}
              */
             msToTime: function(amount) {
                 var days = 0,
@@ -324,7 +324,7 @@
              * @function
              * @param {Date|Interval} time 시간
              * @param {Date|Interval} time 시간
-             * @return {JSON}
+             * @return {Object}
              *
              * @example
              * vinyl.date.timeDiff(new Date, new Date(new Date() - 51811));
@@ -369,7 +369,7 @@
              * 주어진 날짜가 몇번째 주인가
              * @function
              * @param {Date} date 날짜
-             * @returns {Number}
+             * @returns {number}
              */
             weekOfYear : (function() {
                 var ms1d = 1000 * 60 * 60 * 24,
@@ -386,7 +386,7 @@
 
             /**
              * 윤년인가
-             * @param {Number} y 년도
+             * @param {number} y 년도
              * @returns {boolean}
              */
             isLeapYear: function ( y ) {
@@ -397,8 +397,8 @@
             /**
              * 날짜 가감함수
              * @param {Date} date 날짜
-             * @param {String} interval 가감타입(ms, s, m, h, d, M, y)
-             * @param {Number} value 가감 크기
+             * @param {string} interval 가감타입(ms, s, m, h, d, M, y)
+             * @param {number} value 가감 크기
              * @returns {Date}
              * @example
              * // 2014-06-10에서 y(년도)를 -4 한 값을 계산
@@ -485,4 +485,4 @@
         };
     });
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);

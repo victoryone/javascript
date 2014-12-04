@@ -31,7 +31,7 @@
         },
         /**
          * 옵션
-         * @property {JSON}
+         * @property {Object}
          */
         defaults: {
             wrapClasses: '',
@@ -40,7 +40,7 @@
         /**
          * 생성자
          * @param {jQuery|Node|String} el 대상 엘리먼트
-         * @param {JSON} options {Optional} 옵션
+         * @param {Object} options {Optional} 옵션
          */
         initialize: function(el, options) {
             var me = this;
@@ -273,8 +273,8 @@
         /**
          * index에 해당하는 option항목을 선택
          *
-         * @param {Number} index 선택하고자 하는 option의 인덱스
-         * @param {Boolean} trigger change이벤트를 발생시킬 것인지 여부
+         * @param {number} index 선택하고자 하는 option의 인덱스
+         * @param {boolean} trigger change이벤트를 발생시킬 것인지 여부
          */
         selectedIndex: function(index, trigger) {
             if (arguments.length === 0) {
@@ -300,9 +300,9 @@
         /**
          * value 에 해당하는 option항목을 선택, 인자가 없을땐 현재 선택되어진 value를 반환
          *
-         * @param {String} index 선택하고자 하는 option의 인덱스
-         * @param {Boolean} trigger change이벤트를 발생시킬 것인지 여부
-         * @return {String}
+         * @param {string} index 선택하고자 하는 option의 인덱스
+         * @param {boolean} trigger change이벤트를 발생시킬 것인지 여부
+         * @return {string}
          * @example
          * &lt;select id="sel">&lt;option value="1">1&lt;/option>&lt;option value="2">2&lt;/option>&lt;/select>
          *
@@ -381,4 +381,4 @@
     });
     ///////////////////////////////////////////////////////////////////////////////////////
 
-})(window, jQuery, window[FRAMEWORK_NAME]);
+})(window, jQuery, window[LIB_NAME]);
